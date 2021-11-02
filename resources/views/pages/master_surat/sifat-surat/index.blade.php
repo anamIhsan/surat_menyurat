@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Surat Keluar
+    Sifat Surat
 @endsection
 
 @section('content')
@@ -13,13 +13,13 @@
                         <div class="card-header bg-info">
                             <h3 class="card-title"> 
                                 <i class="fas fa-table"></i> 
-                                Data Surat Keluar
+                                Data Sifat Surat
                             </h3>
                         </div>
                         <div class="card-body">
                             {{-- @if (Auth::user()->roles != 'WATCHER')
                             @endif --}}
-                            <a class="btn btn-primary btn-md mb-2" href="{{ route('kelola_surat-surat_keluar_create') }}">
+                            <a class="btn btn-primary btn-md mb-2" href="{{ route('master_surat-sifat_surat_create') }}">
                                 <i class="fas fa-edit"></i>
                                 Tambah Data
                             </a>
@@ -28,12 +28,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Klasifikasi</th>
-                                        <th>Perihal</th>
-                                        <th>Isi Ringkas</th>
-                                        <th>Tanggal Surat</th>
-                                        <th>Catatan</th>
-                                        <th>Diterima</th>
+                                        <th>Nama Sifat Surat</th>
                                         <th>Action</th>
                                         {{-- @if (Auth::user()->roles != 'WATCHER')
                                         @endif --}}
@@ -48,20 +43,8 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Dinas A</td>
-                                        <td>Umum</td>
-                                        <td>Proposal</td>
-                                        <td>Proposal</td>
-                                        <td>22-22-2222</td>
-                                        <td>Ya</td> 
                                         <td>
-                                            <a class="btn btn-success btn-sm"
-                                                href="#showData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip"     
-                                            >
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_keluar_edit') }}">
+                                            <a class="btn btn-warning btn-sm" href="{{ route('master_surat-sifat_surat_edit') }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a class="btn btn-danger btn-sm" 
@@ -82,7 +65,7 @@
                                                         {{-- @csrf
                                                         @method('DELETE') --}}
                                                         <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Surat Keluar</h4>
+                                                            <h4 class="modal-title">Delete Sifat Surat</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                         </div>
                                                         <div class="modal-body">					
@@ -101,20 +84,8 @@
                                     <tr>
                                         <td>3</td>
                                         <td>Dinas A</td>
-                                        <td>Umum</td>
-                                        <td>Proposal</td>
-                                        <td>Proposal</td>
-                                        <td>22-22-2222</td>
-                                        <td>Ya</td> 
                                         <td>
-                                            <a class="btn btn-success btn-sm"
-                                                href="#showData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip" 
-                                            >
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_keluar_edit') }}">
+                                            <a class="btn btn-warning btn-sm" href="{{ route('master_surat-sifat_surat_edit') }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a class="btn btn-danger btn-sm" 
@@ -135,7 +106,7 @@
                                                         {{-- @csrf
                                                         @method('DELETE') --}}
                                                         <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Surat Keluar</h4>
+                                                            <h4 class="modal-title">Delete Sifat Surat</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                         </div>
                                                         <div class="modal-body">					
@@ -154,20 +125,8 @@
                                     <tr>
                                         <td>2</td>
                                         <td>Dinas b</td>
-                                        <td>Rahasia</td>
-                                        <td>Penting</td>
-                                        <td>Banget</td>
-                                        <td>11-11-1111</td>
-                                        <td>Tidak</td> 
                                         <td>
-                                            <a class="btn btn-success btn-sm"
-                                                href="#showData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip" 
-                                            >
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_keluar_edit') }}">
+                                            <a class="btn btn-warning btn-sm" href="{{ route('master_surat-sifat_surat_edit') }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a class="btn btn-danger btn-sm" 
@@ -188,7 +147,7 @@
                                                         {{-- @csrf
                                                         @method('DELETE') --}}
                                                         <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Surat Keluar</h4>
+                                                            <h4 class="modal-title">Delete Sifat Surat</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                         </div>
                                                         <div class="modal-body">					
@@ -207,20 +166,8 @@
                                     <tr>
                                         <td>4</td>
                                         <td>Kelas A</td>
-                                        <td>Biasa</td>
-                                        <td>Apa</td>
-                                        <td>Kagak</td>
-                                        <td>33-33-3322</td>
-                                        <td>Belum</td> 
                                         <td>
-                                            <a class="btn btn-success btn-sm"
-                                                href="#showData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip" 
-                                            >
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_keluar_edit') }}">
+                                            <a class="btn btn-warning btn-sm" href="{{ route('master_surat-sifat_surat_edit') }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a class="btn btn-danger btn-sm" 
@@ -241,7 +188,7 @@
                                                         {{-- @csrf
                                                         @method('DELETE') --}}
                                                         <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Surat Keluar</h4>
+                                                            <h4 class="modal-title">Delete Sifat Surat</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                         </div>
                                                         <div class="modal-body">					
@@ -259,50 +206,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            {{-- Modal Show Data --}}
-                            <div id="showData" class="modal fade">
-                                <div class="modal-dialog col-sm-12">
-                                    <div class="modal-content col-sm-12">
-                                        <div class="modal-header bg-primary">						
-                                            <h5 class="modal-title">
-                                                <i class="fas fa-user"></i>
-                                                Detail Surat Keluar
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        </div>
-                                        <table class="table table-bordered">
-                                            <tr>
-                                                <th>Klasifikasi</th>
-                                                <td>UMUM</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Perihal</th>
-                                                <td>Permohonan Layanan</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Isi Ringkas</th>
-                                                <td>Tentang Permohonan Surat</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Tanggal Surat Keluar</th>
-                                                <td>22-22-2222</td>
-                                            </tr>
-                                            <tr>
-                                                <th>No Surat Keluar</th>
-                                                <td>2021</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Tanggal Diteruskan</th>
-                                                <td>23-11-01</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Catatan</th>
-                                                <td>Catatan Pengolah</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

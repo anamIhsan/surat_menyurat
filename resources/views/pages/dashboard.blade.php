@@ -20,7 +20,6 @@
                             <span class="info-box-text">Total Surat Masuk</span>
                             <span class="info-box-number">
                                 10
-                                <small>%</small>
                             </span>
                         </div>
                     </div>
@@ -31,7 +30,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Total Surat Keluar</span>
-                            <span class="info-box-number">41,410</span>
+                            <span class="info-box-number">41410</span>
                         </div>
                     </div>
                 </div>

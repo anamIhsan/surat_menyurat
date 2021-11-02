@@ -28,7 +28,7 @@
                                 <thead>
                                     <tr>
                                         <th>Harap</th>
-                                        <th>Catatan Pengolah</th>
+                                        <th>Pegawai Yang Ditunjuk</th>
                                         <th>Catatan Admin Tu</th>
                                         <th>Catatan Kepala Dinas</th>
                                         <th>Verifikasi</th>

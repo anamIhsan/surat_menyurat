@@ -30,7 +30,7 @@
                                         <th>No</th>
                                         <th>Dari</th>
                                         <th>Klasifikasi</th>
-                                        <th>Perihal</th>
+                                        <th>No Surat</th>
                                         <th>Isi Ringkas</th>
                                         <th>Tanggal Masuk</th>
                                         <th>Diterima</th>

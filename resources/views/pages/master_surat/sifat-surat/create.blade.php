@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Surat Keluar
+    Sifat Surat
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
                 <div class="card-header">
                     <h3 class="card-title">
                         <i class="fas fa-edit"></i>  
-                        Tambah Surat Keluar
+                        Tambah Sifat Surat
                     </h3>
                 </div>
                 <form action="" method="POST" class="form-horizontal">
@@ -28,98 +28,21 @@
                     @csrf --}}
                   <div class="card-body">
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Teruskan Kepada</label>
-                        <div class="col-sm-10">
-                            <input 
-                                type="text" 
-                                class="form-control" 
-                                placeholder="Penerima"
-                                name="penerima"
-                                value="{{ old('penerima') }}"     
-                            >
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">Perihal</label>
-                      <div class="col-sm-10">
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Perihal"
-                            name="perihal"
-                            value="{{ old('perihal') }}"    
-                        >
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Tanggal Surat Keluar &<br>Tanggal Diteruskan</label>
+                        <label class="col-sm-2 col-form-label">Nama Sifat Surat</label>
                         <div class="col-sm-5">
-                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input 
-                                    type="text" 
-                                    class="form-control datetimepicker-input" 
-                                    data-target="#reservationdate"
-                                    placeholder="Tanggal Surat Keluar"
-                                    name="tanggal_surat_keluar"    
-                                />
-                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                                <input 
-                                    type="text" 
-                                    class="form-control datetimepicker-input" 
-                                    data-target="#reservationdate2"
-                                    placeholder="Tanggal Diteruskan"
-                                    name="tanggal_diteruskan"    
-                                />
-                                <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Klasifikasi Surat</label>
-                        <div class="col-sm-5">
-                            <select class="form-control" name="gender">
-                                <option disabled="disabled" selected="selected" class="form-control">-- pilih --</option>
-                                <option value="LK">UMUM</option>
-                                <option value="PR">PEMERINTAHAN</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Isi Ringkas</label>
-                        <div class="col-sm-10">
                           <input 
                             type="text" 
                             class="form-control" 
-                            placeholder="Isi Ringkas"
-                            name="isi_ringkas"
-                            value="{{ old('isi_ringkas') }}"     
-                        >
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Catatan</label>
-                        <div class="col-sm-10">
-                          <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Catatan"
-                            name="isi_ringkas"
-                            value="{{ old('isi_ringkas') }}"     
+                            placeholder="Nama Sifat Surat"
+                            name="nama_sifat_surat"
+                            value="{{ old('nama_sifat_surat') }}"     
                         >
                         </div>
                     </div>
                   </div>
                   <div class="card-footer text-right">
                     <button type="submit" class="btn btn-success">Submit</button>
-                    <a href="{{ route('kelola_surat-surat_keluar') }}" class="btn btn-danger">Cancel</a>
+                    <a href="{{ route('master_surat-sifat_surat') }}" class="btn btn-danger">Cancel</a>
                   </div>
                 </form>
             </div>
@@ -156,8 +79,7 @@
             format: 'L'
         });
 
-         //Date picker
-         $('#reservationdate2').datetimepicker({
+        $('#reservationdate2').datetimepicker({
             format: 'L'
         });
     

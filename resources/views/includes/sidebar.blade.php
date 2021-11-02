@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{ route('dashboard') }}" class="brand-link">
       <img src="{{ asset('assets/dist/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">SURAT MENYURAT</span>
     </a>
@@ -16,6 +16,7 @@
           <a href="#" class="d-block">Alexander Pierce</a>
           {{-- <a href="" class="d-block">{{ Auth::user()->email }}</a>
           <span class="right badge badge-success">{{ Auth::user()->roles }}</span> --}}
+          <span class="right badge badge-success">SUPER ADMIN</span>
         </div>
       </div>
 
@@ -36,8 +37,29 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item
+            {{ (request()->is('master-surat/klasifikasi-surat')) ? 'menu-open' : '' }}
+            {{ (request()->is('master-surat/klasifikasi-surat/create')) ? 'menu-open' : '' }}
+            {{ (request()->is('master-surat/klasifikasi-surat/edit*')) ? 'menu-open' : '' }}
+            {{ (request()->is('master-surat/sifat-surat')) ? 'menu-open' : '' }}
+            {{ (request()->is('master-surat/sifat-surat/create')) ? 'menu-open' : '' }}
+            {{ (request()->is('master-surat/sifat-surat/edit*')) ? 'menu-open' : '' }}
+            {{ (request()->is('master-surat/master-harap')) ? 'menu-open' : '' }}
+            {{ (request()->is('master-surat/master-harap/create')) ? 'menu-open' : '' }}
+            {{ (request()->is('master-surat/master-harap/edit*')) ? 'menu-open' : '' }}
+          ">
+            <a href="#" 
+              class="nav-link
+              {{ (request()->is('master-surat/klasifikasi-surat')) ? 'active' : '' }}  
+              {{ (request()->is('master-surat/klasifikasi-surat/create')) ? 'active' : '' }}  
+              {{ (request()->is('master-surat/klasifikasi-surat/edit*')) ? 'active' : '' }}  
+              {{ (request()->is('master-surat/sifat-surat')) ? 'active' : '' }}  
+              {{ (request()->is('master-surat/sifat-surat/create')) ? 'active' : '' }}  
+              {{ (request()->is('master-surat/sifat-surat/edit*')) ? 'active' : '' }} 
+              {{ (request()->is('master-surat/master-harap')) ? 'active' : '' }}  
+              {{ (request()->is('master-surat/master-harap/create')) ? 'active' : '' }}  
+              {{ (request()->is('master-surat/master-harap/edit*')) ? 'active' : '' }}   
+            ">
               <i class="nav-icon fas fa-coins"></i>
               <p>
                 Master Surat
@@ -46,7 +68,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('master_surat-klasifikasi_surat') }}" 
+                  class="nav-link
+                  {{ (request()->is('master-surat/klasifikasi-surat')) ? 'active' : '' }}  
+                  {{ (request()->is('master-surat/klasifikasi-surat/create')) ? 'active' : '' }}  
+                  {{ (request()->is('master-surat/klasifikasi-surat/edit*')) ? 'active' : '' }}  
+                ">
                   <i class="far fa-circle text-danger nav-icon"></i>
                   <p>Klasifikasi Surat</p>
                 </a>
@@ -54,7 +81,12 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('master_surat-sifat_surat') }}" 
+                  class="nav-link
+                  {{ (request()->is('master-surat/sifat-surat')) ? 'active' : '' }}  
+                  {{ (request()->is('master-surat/sifat-surat/create')) ? 'active' : '' }}  
+                  {{ (request()->is('master-surat/sifat-surat/edit*')) ? 'active' : '' }}  
+                ">
                   <i class="far fa-circle text-danger nav-icon"></i>
                   <p>Sifat Surat</p>
                 </a>
@@ -62,7 +94,12 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('master_surat-master_harap') }}" 
+                  class="nav-link
+                  {{ (request()->is('master-surat/master-harap')) ? 'active' : '' }}  
+                  {{ (request()->is('master-surat/master-harap/create')) ? 'active' : '' }}  
+                  {{ (request()->is('master-surat/master-harap/edit*')) ? 'active' : '' }}  
+                ">
                   <i class="far fa-circle text-danger nav-icon"></i>
                   <p>Master Harap</p>
                 </a>
@@ -115,7 +152,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/general.html" 
+                <a href="{{ route('kelola_surat-surat_keluar') }}" 
                   class="nav-link
                   {{ (request()->is('kelola-surat/surat-keluar')) ? 'active' : '' }}  
                   {{ (request()->is('kelola-surat/surat-keluar/create')) ? 'active' : '' }}  
@@ -153,22 +190,22 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" 
+                <a href="{{ route('laporan_surat-surat_masuk') }}" 
                   class="nav-link
-                  {{-- {{ (request()->is('laporan-surat/surat-masuk')) ? 'active' : '' }}  
+                  {{ (request()->is('laporan-surat/surat-masuk')) ? 'active' : '' }}  
                   {{ (request()->is('laporan-surat/surat-masuk/create')) ? 'active' : '' }}  
-                  {{ (request()->is('laporan-surat/surat-masuk/edit*')) ? 'active' : '' }}    --}}
+                  {{ (request()->is('laporan-surat/surat-masuk/edit*')) ? 'active' : '' }}   
                 ">
                   <i class="far fa-circle text-danger nav-icon"></i>
                   <p>Surat Masuk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/general.html" 
+                <a href="{{ route('laporan_surat-surat_keluar') }}" 
                   class="nav-link
-                  {{-- {{ (request()->is('laporan-surat/surat-keluar')) ? 'active' : '' }}  
+                  {{ (request()->is('laporan-surat/surat-keluar')) ? 'active' : '' }}  
                   {{ (request()->is('laporan-surat/surat-keluar/create')) ? 'active' : '' }}  
-                  {{ (request()->is('laporan-surat/surat-keluar/edit*')) ? 'active' : '' }}    --}}
+                  {{ (request()->is('laporan-surat/surat-keluar/edit*')) ? 'active' : '' }}   
                 ">
                   <i class="far fa-circle text-danger nav-icon"></i>
                   <p>Surat Keluar</p>

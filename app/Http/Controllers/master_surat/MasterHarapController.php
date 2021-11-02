@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\kelola_surat;
+namespace App\Http\Controllers\master_surat;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SuratKeluarController extends Controller
+class MasterHarapController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class SuratKeluarController extends Controller
      */
     public function index()
     {
-        return view('pages.kelola_surat.surat-keluar.index');
+        return view('pages.master_surat.master-harap.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class SuratKeluarController extends Controller
      */
     public function create()
     {
-        return view('pages.kelola_surat.surat-keluar.create');
+        return view('pages.master_surat.master-harap.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class SuratKeluarController extends Controller
      */
     public function edit()
     {
-        return view('pages.kelola_surat.surat-keluar.edit');
+        return view('pages.master_surat.master-harap.edit');
     }
 
     /**
@@ -78,7 +78,7 @@ class SuratKeluarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
         //
     }
