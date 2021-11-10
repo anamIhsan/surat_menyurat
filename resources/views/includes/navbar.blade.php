@@ -20,19 +20,34 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">15 Notifications</span>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
+          <a href="#" class="dropdown-item d-flex align-items-center position-relative">
+              <i class="fas fa-envelope"></i> 
+              <div class="ml-3">
+                <p><strong>Dinas B</strong></p>
+                <p class="text-sm" style="width: 130px;">Permohonan Layanan</p>
+              </div>
+              <p class="text-muted text-sm mr-3" 
+                style="position: absolute; right: 0;">23/11/2031</p>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
+          <a href="#" class="dropdown-item d-flex align-items-center position-relative">
+            <i class="fas fa-envelope"></i> 
+            <div class="ml-3">
+              <p><strong>Dinas B</strong></p>
+              <p class="text-sm" style="width: 130px;">Permohonan</p>
+            </div>
+            <p class="text-muted text-sm mr-3" 
+              style="position: absolute; right: 0;">23/11/2031</p>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
+          <a href="#" class="dropdown-item d-flex align-items-center position-relative">
+            <i class="fas fa-envelope"></i> 
+            <div class="ml-3">
+              <p><strong>Dinas B</strong></p>
+              <p class="text-sm" style="width: 130px;">Perihal Permohonan Layanan</p>
+            </div>
+            <p class="text-muted text-sm mr-3" 
+              style="position: absolute; right: 0;">23/11/2031</p>
           </a>
         </div>
       </li>
