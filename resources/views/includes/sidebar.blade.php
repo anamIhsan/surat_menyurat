@@ -228,9 +228,6 @@
             </a>
           </li>
           <li class="nav-item">
-            {{-- <form action="{{ route('logout') }}" method="POST" class="">
-              @csrf
-              @method('POST') --}}
               <a href="#logout"
                 data-toggle="modal" 
                 data-toggle="tooltip"
@@ -242,7 +239,6 @@
                   </p>
                 </button>
               </a>
-            {{-- </form> --}}
           </li>
         </ul>
       </nav>
@@ -252,37 +248,22 @@
 <div id="logout" class="modal fade">
   <div class="modal-dialog">
       <div class="modal-content">
-          {{-- <form class="d-inline-block" action="{{ route('pengguna_delete', $data->id) }}" method="POST">
+          <form class="d-inline-block" action="{{ route('logout') }}" method="POST">
             @csrf
-            @method('DELETE')
-              <div class="modal-header">						
-                  <h4 class="modal-title">Delete Pengguna</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              </div>
-              <div class="modal-body">					
-                  <p>Are you sure you want to delete data <strong>{{ $data->name }}</strong> ?</p>
-                  <p class="text-warning"><small>This action cannot be undone.</small></p>
-              </div>
-              <div class="modal-footer">
-                  <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                  <button type="submit" class="btn btn-danger btn-small">delete</button>
-              </div>
-          </form> --}}
-
-              <div class="modal-header">						
-                  <h4 class="modal-title">Yakin Logout ?</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              </div>
-              <div class="modal-body">					
-                  <p>Are you sure you want to logout ?</p>
-                  <p class="text-warning"><small>This action cannot be undone.</small></p>
-              </div>
-              <div class="modal-footer">
-                  <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                  <a href="{{ route('login') }}">
-                    <button class="btn btn-danger btn-small">Ya, Yakin</button>
-                  </a>
-                </div>
+            @method('POST')
+            <div class="modal-header">						
+              <h4 class="modal-title">Yakin Logout ?</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">					
+              <p>Are you sure you want to logout ?</p>
+              <p class="text-warning"><small>This action cannot be undone.</small></p>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <button type="submit" class="btn btn-danger btn-small">Ya, Yakin</button>
+            </div>
+          </form>
       </div>
   </div>
 </div>

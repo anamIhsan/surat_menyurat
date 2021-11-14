@@ -292,10 +292,6 @@
                                                 <td>2021</td>
                                             </tr>
                                             <tr>
-                                                <th>Tanggal Diteruskan</th>
-                                                <td>23-11-01</td>
-                                            </tr>
-                                            <tr>
                                                 <th>Catatan</th>
                                                 <td>Catatan Pengolah</td>
                                             </tr>

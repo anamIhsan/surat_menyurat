@@ -27,11 +27,11 @@ use Illuminate\Support\Facades\Route;
 // Auth
 Route::get('/', [LoginController::class, 'login'])
     ->name('login');
-// Route::post('/authenticate', [LoginController::class, 'authenticate'])
-//     ->name('authenticate');
-// Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/authenticate', [LoginController::class, 'authenticate'])
+    ->name('authenticate');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     // Dasboard
     Route::get('/dashboard', [DashboardController::class, 'index'])
@@ -218,6 +218,6 @@ Route::get('/', [LoginController::class, 'login'])
             ->name('pengguna_delete');
 
     });
-// });
+});
 
-//<!-- al-muminuun / abdullah al-mathruud / :11: -->
+//<!-- saba / abdullah al-mathruud / :14: -->
