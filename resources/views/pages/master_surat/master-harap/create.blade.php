@@ -23,9 +23,9 @@
                         Tambah Master Harap
                     </h3>
                 </div>
-                <form action="" method="POST" class="form-horizontal">
-                    {{-- @method('POST')
-                    @csrf --}}
+                <form action="{{ route('master_surat-master_harap_store') }}" method="POST" class="form-horizontal">
+                    @method('POST')
+                    @csrf
                   <div class="card-body">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama Harap</label>
@@ -34,8 +34,8 @@
                             type="text" 
                             class="form-control" 
                             placeholder="Nama Harap"
-                            name="nama_harap"
-                            value="{{ old('nama_harap') }}"     
+                            name="name"
+                            value="{{ old('name') }}"     
                         >
                         </div>
                     </div>

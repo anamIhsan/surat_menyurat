@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\master_surat;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SifatSuratRequest;
+use App\Models\SifatSurat;
 use Illuminate\Http\Request;
 
 class SifatSuratController extends Controller
@@ -14,7 +16,11 @@ class SifatSuratController extends Controller
      */
     public function index()
     {
-        return view('pages.master_surat.sifat-surat.index');
+        $sifat = SifatSurat::all();
+
+        return view('pages.master_surat.sifat-surat.index', [
+            'sifat' => $sifat
+        ]);
     }
 
     /**
@@ -33,9 +39,13 @@ class SifatSuratController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SifatSuratRequest $request)
     {
-        //
+        $data = $request->all();
+
+        SifatSurat::create($data);
+
+        return redirect()->route('master_surat-sifat_surat')->with('notification-success-add', '');
     }
 
     /**
@@ -55,9 +65,13 @@ class SifatSuratController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('pages.master_surat.sifat-surat.edit');
+        $data = SifatSurat::findOrFail($id);
+
+        return view('pages.master_surat.sifat-surat.edit', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -67,9 +81,13 @@ class SifatSuratController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SifatSuratRequest $request, $id)
     {
-        //
+        $data = SifatSurat::findOrFail($id);
+
+        $data->update($request->all());
+
+        return redirect()->route('master_surat-sifat_surat')->with('notification-success-edit', '');
     }
 
     /**
@@ -78,8 +96,12 @@ class SifatSuratController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        //
+        $data = SifatSurat::findOrFail($id);
+
+        $data->delete();
+        
+        return back()->with('notification-success-delete', '');
     }
 }

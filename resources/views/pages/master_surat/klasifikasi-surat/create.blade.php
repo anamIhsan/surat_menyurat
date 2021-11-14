@@ -23,9 +23,9 @@
                         Tambah Klasifikasi Surat
                     </h3>
                 </div>
-                <form action="" method="POST" class="form-horizontal">
-                    {{-- @method('POST')
-                    @csrf --}}
+                <form action="{{ route('master_surat-klasifikasi_surat_store') }}" method="POST" class="form-horizontal">
+                    @method('POST')
+                    @csrf
                   <div class="card-body">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Kode Klasifikasi</label>
@@ -34,8 +34,8 @@
                                 type="number" 
                                 class="form-control" 
                                 placeholder="Kode Klasifikasi"
-                                name="kode_klasifikasi"
-                                value="{{ old('kode_klasifikasi') }}"     
+                                name="code"
+                                value="{{ old('code') }}"     
                             >
                         </div>
                     </div>
@@ -46,8 +46,8 @@
                             type="text" 
                             class="form-control" 
                             placeholder="Nama Klasifikasi"
-                            name="nama_klasifikasi"
-                            value="{{ old('nama_klasifikasi') }}"     
+                            name="name"
+                            value="{{ old('name') }}"     
                         >
                         </div>
                     </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\master_surat;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\KlasifikasiSuratRequest;
+use App\Models\KlasifikasiSurat;
 use Illuminate\Http\Request;
 
 class KlasifikasiSuratController extends Controller
@@ -13,8 +15,12 @@ class KlasifikasiSuratController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('pages.master_surat.klasifikasi-surat.index');
+    {   
+        $klasifikasi = KlasifikasiSurat::all();
+
+        return view('pages.master_surat.klasifikasi-surat.index', [
+            'klasifikasi' => $klasifikasi
+        ]);
     }
 
     /**
@@ -33,9 +39,13 @@ class KlasifikasiSuratController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KlasifikasiSuratRequest $request)
     {
-        //
+        $data = $request->all();
+
+        KlasifikasiSurat::create($data);
+
+        return redirect()->route('master_surat-klasifikasi_surat')->with('notification-success-add', '');
     }
 
     /**
@@ -55,9 +65,13 @@ class KlasifikasiSuratController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('pages.master_surat.klasifikasi-surat.edit');
+        $data = KlasifikasiSurat::findOrFail($id);
+
+        return view('pages.master_surat.klasifikasi-surat.edit', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -67,9 +81,13 @@ class KlasifikasiSuratController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(KlasifikasiSuratRequest $request, $id)
     {
-        //
+        $data = KlasifikasiSurat::findOrFail($id);
+
+        $data->update($request->all());
+        
+        return redirect()->route('master_surat-klasifikasi_surat')->with('notification-success-edit', '');
     }
 
     /**
@@ -78,8 +96,13 @@ class KlasifikasiSuratController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        //
+        $data = KlasifikasiSurat::findOrFail($id);
+
+        $data->delete();
+
+        return back()->with('notification-success-delete', '');
+
     }
 }

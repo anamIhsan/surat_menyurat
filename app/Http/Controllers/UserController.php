@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,7 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('pages.pegawai.Index');
+        $users = User::all();
+
+        return view('pages.pegawai.Index', [
+            'users' => $users
+        ]);
     }
 
     /**
@@ -32,9 +39,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $data['password'] = Hash::make($request->password);
+
+        User::create($data);
+
+        return redirect()->route('pengguna')->with('notification-success-add', '');
     }
 
     /**
@@ -54,9 +67,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('pages.pegawai.edit');
+        $data = User::findOrFail($id);
+
+        return view('pages.pegawai.edit', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -66,9 +83,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $data = User::findOrFail($id);
+
+        $request->merge([
+            'password' => Hash::make($request->password)
+        ]);
+
+        $data->update($request->all());
+        return redirect()->route('pengguna')->with('notification-success-edit', '');
     }
 
     /**
@@ -79,6 +103,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = User::findOrFail($id);
+
+        $data->delete();
+        return back()->with('notification-success-delete', '');
     }
 }

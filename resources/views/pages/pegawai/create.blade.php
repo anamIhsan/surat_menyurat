@@ -23,9 +23,9 @@
                         Tambah Data Pengguna
                     </h3>
                 </div>
-                <form action="" method="POST" class="form-horizontal">
-                {{-- @csrf
-                @method('POST') --}}
+                <form action="{{ route('pengguna_store') }}" method="POST" class="form-horizontal">
+                @csrf
+                @method('POST')
                     <div class="card-body">
                         <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama Pengguna</label>
@@ -46,8 +46,8 @@
                                     type="text" 
                                     class="form-control" 
                                     placeholder="Jabatan"
-                                    name="name"
-                                    value="{{ old('name') }}"    
+                                    name="jabatan"
+                                    value="{{ old('jabatan') }}"    
                                 >
                             </div>
                         </div>
@@ -58,8 +58,8 @@
                                     type="text" 
                                     class="form-control" 
                                     placeholder="NIP"
-                                    name="name"
-                                    value="{{ old('name') }}"    
+                                    name="NIP"
+                                    value="{{ old('NIP') }}"    
                                 >
                             </div>
                         </div>
@@ -92,9 +92,9 @@
                                 <select class="form-control" name="roles">
                                     <option disabled="disabled" selected="selected" class="form-control ">-- pilih --</option>
                                     <option value="ADMIN">Admin</option>
-                                    <option value="WATCHER">Admin TU</option>
-                                    <option value="WATCHER">Kepala Dinas</option>
-                                    <option value="WATCHER">Pegawai</option>
+                                    <option value="ADMIN TU">Admin TU</option>
+                                    <option value="KEPALA DINAS">Kepala Dinas</option>
+                                    <option value="PEGAWAI">Pegawai</option>
                                 </select>
                             </div>
                         </div>

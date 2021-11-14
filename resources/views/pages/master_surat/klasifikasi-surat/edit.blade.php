@@ -23,10 +23,10 @@
                         Ubah Klasifikasi Surat
                     </h3>
                 </div>
-                <form action="" method="POST" class="form-horizontal">
-                    {{-- @method('POST')
-                    @csrf --}}
-                  <div class="card-body">
+                <form action="{{ route('master_surat-klasifikasi_surat_update', $data->id) }}" method="POST" class="form-horizontal">
+                    @method('PUT')
+                    @csrf
+                <div class="card-body">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Kode Klasifikasi</label>
                         <div class="col-sm-5">
@@ -34,28 +34,28 @@
                                 type="number" 
                                 class="form-control" 
                                 placeholder="Kode Klasifikasi"
-                                name="kode_klasifikasi"
-                                value="{{ old('kode_klasifikasi') }}"     
+                                name="code"
+                                value="{{ $data->code }}"     
                             >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama Klasifikasi</label>
                         <div class="col-sm-5">
-                          <input 
+                        <input 
                             type="text" 
                             class="form-control" 
                             placeholder="Nama Klasifikasi"
-                            name="nama_klasifikasi"
-                            value="{{ old('nama_klasifikasi') }}"     
+                            name="name"
+                            value="{{ $data->name }}"     
                         >
                         </div>
                     </div>
-                  </div>
-                  <div class="card-footer text-right">
+                </div>
+                <div class="card-footer text-right">
                     <button type="submit" class="btn btn-success">Submit</button>
                     <a href="{{ route('master_surat-klasifikasi_surat') }}" class="btn btn-danger">Cancel</a>
-                  </div>
+                </div>
                 </form>
             </div>
         </div>

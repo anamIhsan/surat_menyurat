@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\master_surat;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MasterHarapRequest;
+use App\Models\MasterHarap;
 use Illuminate\Http\Request;
 
 class MasterHarapController extends Controller
@@ -14,7 +16,11 @@ class MasterHarapController extends Controller
      */
     public function index()
     {
-        return view('pages.master_surat.master-harap.index');
+        $master = MasterHarap::all();
+
+        return view('pages.master_surat.master-harap.index', [
+            'master' => $master
+        ]);
     }
 
     /**
@@ -33,9 +39,13 @@ class MasterHarapController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MasterHarapRequest $request)
     {
-        //
+        $data = $request->all();
+        
+        MasterHarap::create($data);
+
+        return redirect()->route('master_surat-master_harap')->with('notification-success-add', '');
     }
 
     /**
@@ -55,9 +65,13 @@ class MasterHarapController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('pages.master_surat.master-harap.edit');
+        $data = MasterHarap::findOrFail($id);
+
+        return view('pages.master_surat.master-harap.edit', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -67,9 +81,13 @@ class MasterHarapController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MasterHarapRequest $request, $id)
     {
-        //
+        $data = MasterHarap::findOrFail($id);
+
+        $data->update($request->all());
+
+        return redirect()->route('master_surat-master_harap')->with('notification-success-edit', '');
     }
 
     /**
@@ -80,6 +98,10 @@ class MasterHarapController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = MasterHarap::findOrFail($id);
+
+        $data->delete();
+
+        return back()->with('notification-success-delete', '');
     }
 }

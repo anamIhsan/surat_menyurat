@@ -50,12 +50,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [KlasifikasiSuratController::class, 'store'])
             ->name('master_surat-klasifikasi_surat_store');
         
-        Route::get('/edit', [KlasifikasiSuratController::class, 'edit'])
+        Route::get('/edit/{id}', [KlasifikasiSuratController::class, 'edit'])
             ->name('master_surat-klasifikasi_surat_edit');
-        Route::put('/update', [KlasifikasiSuratController::class, 'update'])
+        Route::put('/update/{id}', [KlasifikasiSuratController::class, 'update'])
             ->name('master_surat-klasifikasi_surat_update');
 
-        Route::delete('/delete', [KlasifikasiSuratController::class, 'destroy'])
+        Route::delete('/delete/{id}', [KlasifikasiSuratController::class, 'destroy'])
             ->name('master_surat-klasifikasi_surat_delete');
 
     });
@@ -71,12 +71,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [SifatSuratController::class, 'store'])
             ->name('master_surat-sifat_surat_store');
         
-        Route::get('/edit', [SifatSuratController::class, 'edit'])
+        Route::get('/edit/{id}', [SifatSuratController::class, 'edit'])
             ->name('master_surat-sifat_surat_edit');
-        Route::put('/update', [SifatSuratController::class, 'update'])
+        Route::put('/update/{id}', [SifatSuratController::class, 'update'])
             ->name('master_surat-sifat_surat_update');
 
-        Route::delete('/delete', [SifatSuratController::class, 'destroy'])
+        Route::delete('/delete/{id}', [SifatSuratController::class, 'destroy'])
             ->name('master_surat-sifat_surat_delete');
 
     });
@@ -92,12 +92,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [MasterHarapController::class, 'store'])
             ->name('master_surat-master_harap_store');
         
-        Route::get('/edit', [MasterHarapController::class, 'edit'])
+        Route::get('/edit/{id}', [MasterHarapController::class, 'edit'])
             ->name('master_surat-master_harap_edit');
-        Route::put('/update', [MasterHarapController::class, 'update'])
+        Route::put('/update/{id}', [MasterHarapController::class, 'update'])
             ->name('master_surat-master_harap_update');
 
-        Route::delete('/delete', [MasterHarapController::class, 'destroy'])
+        Route::delete('/delete/{id}', [MasterHarapController::class, 'destroy'])
             ->name('master_surat-master_harap_delete');
 
     });
@@ -209,12 +209,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [UserController::class, 'store'])
             ->name('pengguna_store');
 
-        Route::get('/edit', [UserController::class, 'edit'])
+        Route::get('/edit/{id}', [UserController::class, 'edit'])
             ->name('pengguna_edit');
-        Route::put('/update', [UserController::class, 'update'])
+        Route::put('/update/{id}', [UserController::class, 'update'])
             ->name('pengguna_update');
 
-        Route::delete('/delete', [UserController::class, 'destroy'])
+        Route::delete('/delete/{id}', [UserController::class, 'destroy'])
             ->name('pengguna_delete');
 
     });

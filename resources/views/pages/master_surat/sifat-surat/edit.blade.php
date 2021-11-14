@@ -23,27 +23,27 @@
                         Ubah Sifat Surat
                     </h3>
                 </div>
-                <form action="" method="POST" class="form-horizontal">
-                    {{-- @method('POST')
-                    @csrf --}}
-                  <div class="card-body">
+                <form action="{{ route('master_surat-sifat_surat_update', $data->id) }}" method="POST" class="form-horizontal">
+                    @method('PUT')
+                    @csrf
+                <div class="card-body">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama Sifat Surat</label>
                         <div class="col-sm-5">
-                          <input 
+                        <input 
                             type="text" 
                             class="form-control" 
                             placeholder="Nama Sifat Surat"
-                            name="nama_sifat_surat"
-                            value="{{ old('nama_sifat_surat') }}"     
+                            name="name"
+                            value="{{ $data->name }}"     
                         >
                         </div>
                     </div>
-                  </div>
-                  <div class="card-footer text-right">
+                </div>
+                <div class="card-footer text-right">
                     <button type="submit" class="btn btn-success">Submit</button>
                     <a href="{{ route('master_surat-sifat_surat') }}" class="btn btn-danger">Cancel</a>
-                  </div>
+                </div>
                 </form>
             </div>
         </div>

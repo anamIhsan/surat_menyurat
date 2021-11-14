@@ -13,10 +13,8 @@
           <img src="{{ asset('assets/dist/img/avatar1.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-          {{-- <a href="" class="d-block">{{ Auth::user()->email }}</a>
-          <span class="right badge badge-success">{{ Auth::user()->roles }}</span> --}}
-          <span class="right badge badge-success">SUPER ADMIN</span>
+          <a href="" class="d-block">{{ Auth::user()->email }}</a>
+          <span class="right badge badge-success">{{ Auth::user()->roles }}</span>
         </div>
       </div>
 

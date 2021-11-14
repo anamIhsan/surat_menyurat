@@ -23,9 +23,9 @@
                         Ubah Data Pengguna
                     </h3>
                 </div>
-                <form action="" method="POST" class="form-horizontal">
-                {{-- @csrf
-                @method('POST') --}}
+                <form action="{{ route('pengguna_update', $data->id) }}" method="POST" class="form-horizontal">
+                @csrf
+                @method('PUT')
                     <div class="card-body">
                         <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama Pengguna</label>
@@ -35,7 +35,7 @@
                                 class="form-control" 
                                 placeholder="Nama Pengguna"
                                 name="name"
-                                value="{{ old('name') }}"    
+                                value="{{ $data->name }}"    
                             >
                         </div>
                         </div>
@@ -46,8 +46,8 @@
                                     type="text" 
                                     class="form-control" 
                                     placeholder="Jabatan"
-                                    name="name"
-                                    value="{{ old('name') }}"    
+                                    name="jabatan"
+                                    value="{{ $data->jabatan }}"    
                                 >
                             </div>
                         </div>
@@ -58,8 +58,8 @@
                                     type="text" 
                                     class="form-control" 
                                     placeholder="NIP"
-                                    name="name"
-                                    value="{{ old('name') }}"    
+                                    name="NIP"
+                                    value="{{ $data->NIP }}"    
                                 >
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                                 class="form-control" 
                                 placeholder="Email"
                                 name="email"
-                                value="{{ old('email') }}" 
+                                value="{{ $data->email }}" 
                             >
                             </div>
                         </div>
@@ -90,11 +90,11 @@
                             <label class="col-sm-2 col-form-label">Level</label>
                             <div class="col-sm-5">
                                 <select class="form-control" name="roles">
-                                    <option disabled="disabled" selected="selected" class="form-control ">-- pilih --</option>
-                                    <option value="ADMIN">Admin</option>
-                                    <option value="WATCHER">Admin TU</option>
-                                    <option value="WATCHER">Kepala Dinas</option>
-                                    <option value="WATCHER">Pegawai</option>
+                                    <option disabled="disabled" class="form-control ">-- pilih --</option>
+                                    <option value="ADMIN" {{ $data->roles == 'ADMIN' ? 'selected' : '' }}>Admin</option>
+                                    <option value="ADMIN TU" {{ $data->roles == 'ADMIN TU' ? 'selected' : '' }}>Admin TU</option>
+                                    <option value="KEPALA DINAS" {{ $data->roles == 'KEPALA DINAS' ? 'selected' : '' }}>Kepala Dinas</option>
+                                    <option value="PEGAWAI" {{ $data->roles == 'PEGAWAI' ? 'selected' : '' }}>Pegawai</option>
                                 </select>
                             </div>
                         </div>

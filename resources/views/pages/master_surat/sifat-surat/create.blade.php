@@ -23,9 +23,9 @@
                         Tambah Sifat Surat
                     </h3>
                 </div>
-                <form action="" method="POST" class="form-horizontal">
-                    {{-- @method('POST')
-                    @csrf --}}
+                <form action="{{ route('master_surat-sifat_surat_store') }}" method="POST" class="form-horizontal">
+                    @method('POST')
+                    @csrf
                   <div class="card-body">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama Sifat Surat</label>
@@ -34,8 +34,8 @@
                             type="text" 
                             class="form-control" 
                             placeholder="Nama Sifat Surat"
-                            name="nama_sifat_surat"
-                            value="{{ old('nama_sifat_surat') }}"     
+                            name="name"
+                            value="{{ old('name') }}"     
                         >
                         </div>
                     </div>

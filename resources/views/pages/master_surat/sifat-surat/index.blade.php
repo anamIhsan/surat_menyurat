@@ -35,20 +35,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @php
+                                    @php
                                         $no = 1
                                     @endphp
-                                    @foreach ($kk as $data)
-                                    @endforeach --}}
+                                    @foreach ($sifat as $data)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Dinas A</td>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $data->name }}</td>
                                         <td>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('master_surat-sifat_surat_edit') }}">
+                                            <a class="btn btn-warning btn-sm" href="{{ route('master_surat-sifat_surat_edit', $data->id) }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a class="btn btn-danger btn-sm" 
-                                                href="#deleteData"
+                                                href="#deleteData{{ $data->id }}"
                                                 data-toggle="modal" 
                                                 data-toggle="tooltip"    
                                             >
@@ -58,18 +57,18 @@
                                         {{-- @if (Auth::user()->roles != 'WATCHER')
                                         @endif --}}
                                         {{-- Modal Delete Data --}}
-                                        <div id="deleteData" class="modal fade">
+                                        <div id="deleteData{{ $data->id }}" class="modal fade">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
-                                                    <form class="d-inline-block" action="" method="POST">
-                                                        {{-- @csrf
-                                                        @method('DELETE') --}}
+                                                    <form class="d-inline-block" action="{{ route('master_surat-sifat_surat_delete', $data->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
                                                         <div class="modal-header">						
                                                             <h4 class="modal-title">Delete Sifat Surat</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                         </div>
                                                         <div class="modal-body">					
-                                                            <p>Are you sure you want to delete data <strong></strong> ?</p>
+                                                            <p>Are you sure you want to delete data <strong>{{ $data->name }}</strong> ?</p>
                                                             <p class="text-warning"><small>This action cannot be undone.</small></p>
                                                         </div>
                                                         <div class="modal-footer">
@@ -81,129 +80,7 @@
                                             </div>
                                         </div> 
                                     </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Dinas A</td>
-                                        <td>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('master_surat-sifat_surat_edit') }}">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" 
-                                                href="#deleteData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip"    
-                                            >
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </td>
-                                        {{-- @if (Auth::user()->roles != 'WATCHER')
-                                        @endif --}}
-                                        {{-- Modal Delete Data --}}
-                                        <div id="deleteData" class="modal fade">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <form class="d-inline-block" action="" method="POST">
-                                                        {{-- @csrf
-                                                        @method('DELETE') --}}
-                                                        <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Sifat Surat</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                        </div>
-                                                        <div class="modal-body">					
-                                                            <p>Are you sure you want to delete data <strong></strong> ?</p>
-                                                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                            <button type="submit" class="btn btn-danger btn-small">delete</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Dinas b</td>
-                                        <td>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('master_surat-sifat_surat_edit') }}">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" 
-                                                href="#deleteData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip"    
-                                            >
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </td>
-                                        {{-- @if (Auth::user()->roles != 'WATCHER')
-                                        @endif --}}
-                                        {{-- Modal Delete Data --}}
-                                        <div id="deleteData" class="modal fade">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <form class="d-inline-block" action="" method="POST">
-                                                        {{-- @csrf
-                                                        @method('DELETE') --}}
-                                                        <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Sifat Surat</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                        </div>
-                                                        <div class="modal-body">					
-                                                            <p>Are you sure you want to delete data <strong></strong> ?</p>
-                                                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                            <button type="submit" class="btn btn-danger btn-small">delete</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Kelas A</td>
-                                        <td>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('master_surat-sifat_surat_edit') }}">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" 
-                                                href="#deleteData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip"    
-                                            >
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </td>
-                                        {{-- @if (Auth::user()->roles != 'WATCHER')
-                                        @endif --}}
-                                        {{-- Modal Delete Data --}}
-                                        <div id="deleteData" class="modal fade">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <form class="d-inline-block" action="" method="POST">
-                                                        {{-- @csrf
-                                                        @method('DELETE') --}}
-                                                        <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Sifat Surat</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                        </div>
-                                                        <div class="modal-body">					
-                                                            <p>Are you sure you want to delete data <strong></strong> ?</p>
-                                                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                            <button type="submit" class="btn btn-danger btn-small">delete</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -233,7 +110,7 @@
         });
     </script>
 
-    <script src="{{ asset('dist/js/alert/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
     {{-- alert success add --}}
     <script>
         if ({{session()->has('notification-success-add')}}) {
