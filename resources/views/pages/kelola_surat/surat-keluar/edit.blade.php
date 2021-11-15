@@ -20,102 +20,99 @@
                 <div class="card-header">
                     <h3 class="card-title">
                         <i class="fas fa-edit"></i>  
-                        ubah Surat Keluar
+                        Ubah Surat Keluar
                     </h3>
                 </div>
-                <form action="" method="POST" class="form-horizontal">
-                    {{-- @method('POST')
-                    @csrf --}}
-                  <div class="card-body">
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Teruskan Kepada</label>
+                <form action="{{ route('kelola_surat-surat_keluar_update', $data->id) }}" method="POST" class="form-horizontal">
+                    @method('PUT')
+                    @csrf
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Teruskan Kepada</label>
+                            <div class="col-sm-10">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="Penerima"
+                                    name="teruskan_kepada"
+                                    value="{{ $data->teruskan_kepada }}"     
+                                >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Perihal</label>
                         <div class="col-sm-10">
                             <input 
                                 type="text" 
                                 class="form-control" 
-                                placeholder="Penerima"
-                                name="penerima"
-                                value="{{ old('penerima') }}"     
+                                placeholder="Perihal"
+                                name="perihal"
+                                value="{{ $data->perihal }}"    
                             >
                         </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">Perihal</label>
-                      <div class="col-sm-10">
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Perihal"
-                            name="perihal"
-                            value="{{ old('perihal') }}"    
-                        >
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">No Surat Keluar &<br>Tanggal Surat Keluar</label>
-                        <div class="col-sm-5">
-                            <input 
-                                type="text" 
-                                class="form-control" 
-                                placeholder="No surat Keluar"
-                                name="No surat Keluar"
-                                value="{{ old('no_surat_keluar') }}"    
-                            >
                         </div>
-                        <div class="col-sm-5">
-                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">No Surat Keluar &<br>Tanggal Surat Keluar</label>
+                            <div class="col-sm-5">
                                 <input 
                                     type="text" 
-                                    class="form-control datetimepicker-input" 
-                                    data-target="#reservationdate"
-                                    placeholder="Tanggal Surat Keluar"
-                                    name="tanggal_surat_keluar"    
-                                />
-                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    class="form-control" 
+                                    placeholder="No surat Keluar Contoh ( 08.118/DP-KM/VII/2021 )"
+                                    name="no_surat"
+                                    value="{{ $data->no_surat }}"    
+                                >
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                    <input 
+                                        type="text" 
+                                        class="form-control datetimepicker-input" 
+                                        data-target="#reservationdate"
+                                        placeholder="Tanggal Surat Keluar"
+                                        name="tanggal_keluar"    
+                                    />
+                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Klasifikasi Surat</label>
-                        <div class="col-sm-5">
-                            <select class="form-control" name="gender">
-                                <option disabled="disabled" selected="selected" class="form-control">-- pilih --</option>
-                                <option value="LK">UMUM</option>
-                                <option value="PR">PEMERINTAHAN</option>
-                            </select>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Sifat Surat & Klasifikasi Surat</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" name="sifat_surat_id">
+                                    <option disabled="disabled" class="form-control">-- Pilih Sifat Surat --</option>
+                                    @foreach ($sifat as $sifats)
+                                        <option value="{{ $sifats->id }}" {{ $sifats->id === $data->sifat->id ? 'selected' : '' }}>{{ $sifats->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-sm-5">
+                                <select class="form-control" name="klasifikasi_surat_id">
+                                    <option disabled="disabled" class="form-control">-- Pilih Klasifikasi Surat --</option>
+                                    @foreach ($klasifikasi as $klasifikasis)
+                                        <option value="{{ $klasifikasis->id }}" {{ $klasifikasis->id === $data->klasifikasi->id ? 'selected' : '' }}>{{ $klasifikasis->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Catatan</label>
+                            <div class="col-sm-10">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                placeholder="Catatan"
+                                name="catatan"
+                                value="{{ $data->catatan }}"     
+                            >
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Isi Ringkas</label>
-                        <div class="col-sm-10">
-                          <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Isi Ringkas"
-                            name="isi_ringkas"
-                            value="{{ old('isi_ringkas') }}"     
-                        >
-                        </div>
+                    <div class="card-footer text-right">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                        <a href="{{ route('kelola_surat-surat_keluar') }}" class="btn btn-danger">Cancel</a>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Catatan</label>
-                        <div class="col-sm-10">
-                          <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Catatan"
-                            name="catatan"
-                            value="{{ old('catatan') }}"     
-                        >
-                        </div>
-                    </div>
-                  </div>
-                  <div class="card-footer text-right">
-                    <button type="submit" class="btn btn-success">Submit</button>
-                    <a href="{{ route('kelola_surat-surat_keluar') }}" class="btn btn-danger">Cancel</a>
-                  </div>
                 </form>
             </div>
         </div>

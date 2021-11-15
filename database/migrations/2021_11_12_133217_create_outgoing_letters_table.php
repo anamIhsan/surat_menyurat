@@ -20,7 +20,7 @@ class CreateOutgoingLettersTable extends Migration
             $table->string('perihal');
             $table->date('tanggal_keluar');
             $table->integer('klasifikasi_surat_id');
-            $table->string('isi_ringkas');
+            $table->integer('sifat_surat_id');
             $table->string('catatan');
             $table->timestamps();
         });

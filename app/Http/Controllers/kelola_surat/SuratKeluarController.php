@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\kelola_surat;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SuratKeluarRequest;
+use App\Models\KlasifikasiSurat;
+use App\Models\SifatSurat;
+use App\Models\SuratKeluar;
 use Illuminate\Http\Request;
 
 class SuratKeluarController extends Controller
@@ -14,7 +18,11 @@ class SuratKeluarController extends Controller
      */
     public function index()
     {
-        return view('pages.kelola_surat.surat-keluar.index');
+        $s_keluar = SuratKeluar::all();
+
+        return view('pages.kelola_surat.surat-keluar.index', [
+            's_keluar' => $s_keluar
+        ]);
     }
 
     /**
@@ -24,7 +32,15 @@ class SuratKeluarController extends Controller
      */
     public function create()
     {
-        return view('pages.kelola_surat.surat-keluar.create');
+        $s_keluar = SuratKeluar::all();
+        $sifat = SifatSurat::all();
+        $klasifikasi = KlasifikasiSurat::all();
+
+        return view('pages.kelola_surat.surat-keluar.create', [
+            's_keluar' => $s_keluar,
+            'sifat' => $sifat,
+            'klasifikasi' => $klasifikasi
+        ]);
     }
 
     /**
@@ -33,9 +49,13 @@ class SuratKeluarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SuratKeluarRequest $request)
     {
-        //
+        $data = $request->all();
+        
+        SuratKeluar::create($data);
+
+        return redirect()->route('kelola_surat-surat_keluar')->with('notification-success-add', '');
     }
 
     /**
@@ -55,9 +75,17 @@ class SuratKeluarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('pages.kelola_surat.surat-keluar.edit');
+        $data = SuratKeluar::findOrFail($id);
+        $sifat = SifatSurat::all();
+        $klasifikasi = KlasifikasiSurat::all();
+
+        return view('pages.kelola_surat.surat-keluar.edit', [
+            'data' => $data,
+            'sifat' => $sifat,
+            'klasifikasi' => $klasifikasi
+        ]);
     }
 
     /**
@@ -67,9 +95,13 @@ class SuratKeluarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SuratKeluarRequest $request, $id)
     {
-        //
+        $data = SuratKeluar::findOrFail($id);
+
+        $data->update($request->all());
+
+        return redirect()->route('kelola_surat-surat_keluar')->with('notification-success-edit', '');
     }
 
     /**
@@ -78,8 +110,12 @@ class SuratKeluarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        //
+        $data = SuratKeluar::findOrFail($id);
+
+        $data->delete();
+
+        return back()->with('notification-success-delete', '');
     }
 }

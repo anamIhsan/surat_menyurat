@@ -120,7 +120,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/update', [SuratMasukController::class, 'update'])
             ->name('kelola_surat-surat_masuk_update');
 
-        Route::delete('/delete', [SuratMasukController::class, 'destroy'])
+        Route::delete('/delete/{id}', [SuratMasukController::class, 'destroy'])
             ->name('kelola_surat-surat_masuk_delete');
 
         // Disposisi
@@ -144,12 +144,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [SuratKeluarController::class, 'store'])
             ->name('kelola_surat-surat_keluar_store');
         
-        Route::get('/edit', [SuratKeluarController::class, 'edit'])
+        Route::get('/edit/{id}', [SuratKeluarController::class, 'edit'])
             ->name('kelola_surat-surat_keluar_edit');
-        Route::put('/update', [SuratKeluarController::class, 'update'])
+        Route::put('/update/{id}', [SuratKeluarController::class, 'update'])
             ->name('kelola_surat-surat_keluar_update');
 
-        Route::delete('/delete', [SuratKeluarController::class, 'destroy'])
+        Route::delete('/delete/{id}', [SuratKeluarController::class, 'destroy'])
             ->name('kelola_surat-surat_keluar_delete');
 
     });
@@ -220,4 +220,4 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-//<!-- saba / abdullah al-mathruud / :14: -->
+//<!-- al-tatfif / muhammad taha al-junaid / :: -->

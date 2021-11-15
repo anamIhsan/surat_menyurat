@@ -43,7 +43,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Total Pengguna</span>
-                            <span class="info-box-number counter-value" data-count="760">
+                            <span class="info-box-number counter-value" data-count="{{ $users }}">
                                 0
                             </span>
                         </div>

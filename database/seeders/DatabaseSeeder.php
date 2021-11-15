@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             LetterClassificationSeeder::class,
             LetterTraitSeeder::class,
             MasterPleaseSeeder::class,
+            SuratKeluarSeeder::class,
         ]);
     }
 }

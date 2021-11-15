@@ -28,277 +28,118 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Klasifikasi</th>
+                                        <th>Untuk</th>
                                         <th>Perihal</th>
-                                        <th>Isi Ringkas</th>
-                                        <th>Tanggal Surat</th>
+                                        <th>Tanggal Surat Keluar</th>
                                         <th>Catatan</th>
-                                        <th>Diterima</th>
                                         <th>Action</th>
                                         {{-- @if (Auth::user()->roles != 'WATCHER')
                                         @endif --}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @php
+                                    @php
                                         $no = 1
                                     @endphp
-                                    @foreach ($kk as $data)
-                                    @endforeach --}}
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Dinas A</td>
-                                        <td>Umum</td>
-                                        <td>Proposal</td>
-                                        <td>Proposal</td>
-                                        <td>22-22-2222</td>
-                                        <td>Ya</td> 
-                                        <td>
-                                            <a class="btn btn-success btn-sm"
-                                                href="#showData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip"     
-                                            >
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_keluar_edit') }}">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" 
-                                                href="#deleteData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip"    
-                                            >
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </td>
-                                        {{-- @if (Auth::user()->roles != 'WATCHER')
-                                        @endif --}}
-                                        {{-- Modal Delete Data --}}
-                                        <div id="deleteData" class="modal fade">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <form class="d-inline-block" action="" method="POST">
-                                                        {{-- @csrf
-                                                        @method('DELETE') --}}
-                                                        <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Surat Keluar</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    @foreach ($s_keluar as $data)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $data->teruskan_kepada }}</td>
+                                            <td>{{ $data->perihal }}</td>
+                                            <td>{{ $data->tanggal_keluar }}</td>
+                                            <td>{{ $data->catatan }}</td>
+                                            <td>
+                                                <a class="btn btn-success btn-sm"
+                                                    href="#showData{{ $data->id }}"
+                                                    data-toggle="modal" 
+                                                    data-toggle="tooltip"     
+                                                >
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                {{-- Modal Show Data --}}
+                                                <div id="showData{{ $data->id }}" class="modal fade">
+                                                    <div class="modal-dialog col-sm-12">
+                                                        <div class="modal-content col-sm-12">
+                                                            <div class="modal-header bg-primary">						
+                                                                <h5 class="modal-title">
+                                                                    <i class="fas fa-user"></i>
+                                                                    Detail Surat Keluar
+                                                                </h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            </div>
+                                                            <table class="table table-bordered">
+                                                                <tr>
+                                                                    <th>Untuk</th>
+                                                                    <td>{{ $data->teruskan_kepada }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>No Surat</th>
+                                                                    <td>{{ $data->no_surat }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Perihal</th>
+                                                                    <td>{{ $data->perihal }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Tanggal Surat Keluar</th>
+                                                                    <td>{{ $data->tanggal_keluar }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Klasifikasi Surat</th>
+                                                                    <td>{{ $data->klasifikasi->name }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Sifat Surat</th>
+                                                                    <td>{{ $data->sifat->name }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Catatan</th>
+                                                                    <td>{{ $data->catatan }}</td>
+                                                                </tr>
+                                                            </table>
                                                         </div>
-                                                        <div class="modal-body">					
-                                                            <p>Are you sure you want to delete data <strong></strong> ?</p>
-                                                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                            <button type="submit" class="btn btn-danger btn-small">delete</button>
-                                                        </div>
-                                                    </form>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div> 
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Dinas A</td>
-                                        <td>Umum</td>
-                                        <td>Proposal</td>
-                                        <td>Proposal</td>
-                                        <td>22-22-2222</td>
-                                        <td>Ya</td> 
-                                        <td>
-                                            <a class="btn btn-success btn-sm"
-                                                href="#showData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip" 
-                                            >
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_keluar_edit') }}">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" 
-                                                href="#deleteData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip"    
-                                            >
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </td>
-                                        {{-- @if (Auth::user()->roles != 'WATCHER')
-                                        @endif --}}
-                                        {{-- Modal Delete Data --}}
-                                        <div id="deleteData" class="modal fade">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <form class="d-inline-block" action="" method="POST">
-                                                        {{-- @csrf
-                                                        @method('DELETE') --}}
-                                                        <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Surat Keluar</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                        </div>
-                                                        <div class="modal-body">					
-                                                            <p>Are you sure you want to delete data <strong></strong> ?</p>
-                                                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                            <button type="submit" class="btn btn-danger btn-small">delete</button>
-                                                        </div>
-                                                    </form>
+                                                <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_keluar_edit', $data->id) }}">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a class="btn btn-danger btn-sm" 
+                                                    href="#deleteData{{ $data->id }}"
+                                                    data-toggle="modal" 
+                                                    data-toggle="tooltip"    
+                                                >
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                            {{-- @if (Auth::user()->roles != 'WATCHER')
+                                            @endif --}}
+                                            {{-- Modal Delete Data --}}
+                                            <div id="deleteData{{ $data->id }}" class="modal fade">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <form class="d-inline-block" action="{{ route('kelola_surat-surat_keluar_delete', $data->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <div class="modal-header">						
+                                                                <h4 class="modal-title">Delete Surat Keluar</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            </div>
+                                                            <div class="modal-body">					
+                                                                <p>Are you sure you want to delete data <strong>{{ $data->teruskan_kepada }}</strong> ?</p>
+                                                                <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                                <button type="submit" class="btn btn-danger btn-small">delete</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div> 
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Dinas b</td>
-                                        <td>Rahasia</td>
-                                        <td>Penting</td>
-                                        <td>Banget</td>
-                                        <td>11-11-1111</td>
-                                        <td>Tidak</td> 
-                                        <td>
-                                            <a class="btn btn-success btn-sm"
-                                                href="#showData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip" 
-                                            >
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_keluar_edit') }}">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" 
-                                                href="#deleteData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip"    
-                                            >
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </td>
-                                        {{-- @if (Auth::user()->roles != 'WATCHER')
-                                        @endif --}}
-                                        {{-- Modal Delete Data --}}
-                                        <div id="deleteData" class="modal fade">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <form class="d-inline-block" action="" method="POST">
-                                                        {{-- @csrf
-                                                        @method('DELETE') --}}
-                                                        <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Surat Keluar</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                        </div>
-                                                        <div class="modal-body">					
-                                                            <p>Are you sure you want to delete data <strong></strong> ?</p>
-                                                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                            <button type="submit" class="btn btn-danger btn-small">delete</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Kelas A</td>
-                                        <td>Biasa</td>
-                                        <td>Apa</td>
-                                        <td>Kagak</td>
-                                        <td>33-33-3322</td>
-                                        <td>Belum</td> 
-                                        <td>
-                                            <a class="btn btn-success btn-sm"
-                                                href="#showData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip" 
-                                            >
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_keluar_edit') }}">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" 
-                                                href="#deleteData"
-                                                data-toggle="modal" 
-                                                data-toggle="tooltip"    
-                                            >
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </td>
-                                        {{-- @if (Auth::user()->roles != 'WATCHER')
-                                        @endif --}}
-                                        {{-- Modal Delete Data --}}
-                                        <div id="deleteData" class="modal fade">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <form class="d-inline-block" action="" method="POST">
-                                                        {{-- @csrf
-                                                        @method('DELETE') --}}
-                                                        <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Surat Keluar</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                        </div>
-                                                        <div class="modal-body">					
-                                                            <p>Are you sure you want to delete data <strong></strong> ?</p>
-                                                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                            <button type="submit" class="btn btn-danger btn-small">delete</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                    </tr>
+                                            </div> 
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
-                            {{-- Modal Show Data --}}
-                            <div id="showData" class="modal fade">
-                                <div class="modal-dialog col-sm-12">
-                                    <div class="modal-content col-sm-12">
-                                        <div class="modal-header bg-primary">						
-                                            <h5 class="modal-title">
-                                                <i class="fas fa-user"></i>
-                                                Detail Surat Keluar
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        </div>
-                                        <table class="table table-bordered">
-                                            <tr>
-                                                <th>Klasifikasi</th>
-                                                <td>UMUM</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Perihal</th>
-                                                <td>Permohonan Layanan</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Isi Ringkas</th>
-                                                <td>Tentang Permohonan Surat</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Tanggal Surat Keluar</th>
-                                                <td>22-22-2222</td>
-                                            </tr>
-                                            <tr>
-                                                <th>No Surat Keluar</th>
-                                                <td>2021</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Catatan</th>
-                                                <td>Catatan Pengolah</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -326,7 +167,7 @@
         });
     </script>
 
-    <script src="{{ asset('dist/js/alert/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
     {{-- alert success add --}}
     <script>
         if ({{session()->has('notification-success-add')}}) {

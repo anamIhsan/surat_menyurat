@@ -14,4 +14,14 @@ class SifatSurat extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function suratKeluar()
+    {
+        return $this->belongsTo(SuratKeluar::class, 'sifat_surat_id', 'id');
+    }
+
+    public function suratMasuk()
+    {
+        return $this->belongsTo(SuratMasuk::class, 'sifat_surat_id', 'id');
+    }
 }
