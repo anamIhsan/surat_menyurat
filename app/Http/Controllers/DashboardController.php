@@ -12,13 +12,13 @@ class DashboardController extends Controller
     public function index()
     {
         $users = User::count();
-        // $s_masuk = SuratMasuk::count();
-        // $s_keluar = SuratKeluar::count();
+        $s_masuk = SuratMasuk::count();
+        $s_keluar = SuratKeluar::count();
 
         return view('pages.dashboard', [
             'users' => $users,
-            // 's_masuk' => $s_masuk,
-            // 's_keluar' => $s_keluar
+            's_masuk' => $s_masuk,
+            's_keluar' => $s_keluar
         ]);
     }
 }

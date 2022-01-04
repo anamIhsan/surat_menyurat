@@ -8,10 +8,10 @@
     <div class="login-box">
         <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a href="index2.html" class="h1"><b>Surat</b>Menyurat</a>
+            <a href="" class="h1"><b>Surat</b>Menyurat</a>
         </div>
         <div class="card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Masuk untuk memulai sesi Anda</p>
     
             <form action="{{ route('authenticate') }}" method="POST">
                 @csrf
@@ -63,13 +63,13 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-block btn-primary">
-                    Sign in
+                    Masuk
                 </button>
             </form>
     
             <div class="social-auth-links text-center mt-2 mb-3">
                 <a href="#" class="btn btn-block btn-danger">
-                    Sign up
+                    Daftar
                 </a>
             </div>
         </div>

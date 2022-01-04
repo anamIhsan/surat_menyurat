@@ -211,7 +211,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-header">SETTINGS</li>
+          <li class="nav-header">PENGATURAN</li>
           <li class="nav-item">
             <a href="{{ route('pengguna') }}" 
               class="nav-link
@@ -233,7 +233,7 @@
                 <button class="nav-link text-left bg-danger">
                   <i class="nav-icon fas fa-arrow-circle-right"></i>
                   <p>
-                    Logout
+                    Keluar
                   </p>
                 </button>
               </a>
@@ -242,7 +242,7 @@
       </nav>
     </div>
 </aside>
-{{-- Modal Delete Data --}}
+{{-- Modal Logout --}}
 <div id="logout" class="modal fade">
   <div class="modal-dialog">
       <div class="modal-content">
@@ -250,16 +250,16 @@
             @csrf
             @method('POST')
             <div class="modal-header">						
-              <h4 class="modal-title">Yakin Logout ?</h4>
+              <h4 class="modal-title">Keluar</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">					
-              <p>Are you sure you want to logout ?</p>
-              <p class="text-warning"><small>This action cannot be undone.</small></p>
+              <p>Apakah Anda yakin ingin keluar ?</p>
+              <p class="text-warning"><small>Tindakan ini tidak bisa dibatalkan.</small></p>
             </div>
             <div class="modal-footer">
-              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                <button type="submit" class="btn btn-danger btn-small">Ya, Yakin</button>
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+              <button type="submit" class="btn btn-danger btn-small">Ya, Yakin</button>
             </div>
           </form>
       </div>

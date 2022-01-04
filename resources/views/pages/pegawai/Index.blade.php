@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-    Data Pengguna
+    Pengguna
+@endsection
+
+@section('title page')
+    Pengguna
 @endsection
 
 @section('content')
@@ -10,18 +14,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header bg-info">
-                            <h3 class="card-title"> 
-                                <i class="fas fa-table"></i> 
-                                Data Pengguna
-                            </h3>
-                        </div>
                         <div class="card-body">
                             {{-- @if (Auth::user()->roles != 'WATCHER')
                             @endif --}}
-                            <a class="btn btn-primary btn-md mb-2" href="{{ route('pengguna_create') }}">
-                                <i class="fas fa-edit"></i>
-                                Tambah Data
+                            <a class="btn btn-info btn-md mb-2" href="{{ route('pengguna_create') }}">
+                                <i class="fas fa-plus-square"></i>
+                                &nbsp;
+                                Tambah
                             </a>
                            
                             <table id="example1" class="table table-bordered table-striped">
@@ -33,7 +32,7 @@
                                         <th>NIP</th>
                                         <th>Level</th>
                                         <th>Email</th>
-                                        <th>Action</th>
+                                        <th>Aksi</th>
                                         {{-- @if (Auth::user()->roles != 'WATCHER')
                                         @endif --}}
                                     </tr>
@@ -54,7 +53,7 @@
                                                 @if ($data->roles != 'SUPER ADMIN')
                                                     <a class="btn btn-warning btn-sm" href="{{ route('pengguna_edit', $data->id) }}">
                                                         <i class="fas fa-edit">
-                                                            Edit
+                                                            Ubah
                                                         </i>
                                                     </a>
                                                     <a class="btn btn-danger btn-sm" 
@@ -63,7 +62,7 @@
                                                         data-toggle="tooltip"    
                                                     >
                                                         <i class="fas fa-trash">
-                                                            Delete
+                                                            Hapus
                                                         </i>
                                                     </a>
                                                 @endif
@@ -76,16 +75,16 @@
                                                             @csrf
                                                             @method('DELETE')
                                                             <div class="modal-header">						
-                                                                <h4 class="modal-title">Delete Pengguna</h4>
+                                                                <h4 class="modal-title">Hapus Pengguna</h4>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                             </div>
                                                             <div class="modal-body">					
-                                                                <p>Are you sure you want to delete data <strong>{{ $data->name }}</strong> ?</p>
-                                                                <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                                                <p>Apakah Anda yakin ingin menghapus data <strong>{{ $data->name }}</strong> ?</p>
+                                                                <p class="text-warning"><small>Tindakan ini tidak bisa dibatalkan.</small></p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                                <button type="submit" class="btn btn-danger btn-small">delete</button>
+                                                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+                                                                <button type="submit" class="btn btn-danger btn-small">Hapus</button>
                                                             </div>
                                                         </form>
                                                     </div>

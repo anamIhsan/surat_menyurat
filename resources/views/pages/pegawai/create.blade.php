@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Data Pengguna
+    Pengguna
 @endsection
 
 @section('content')
@@ -16,11 +16,10 @@
                     </ul>
                 </div>
             @endif
-            <div class="card card-info">
+            <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">
-                        <i class="fas fa-edit"></i>  
-                        Tambah Data Pengguna
+                    <h3 class="card-title">  
+                        Tambah Pengguna
                     </h3>
                 </div>
                 <form action="{{ route('pengguna_store') }}" method="POST" class="form-horizontal">
@@ -55,7 +54,7 @@
                             <label class="col-sm-2 col-form-label">NIP</label>
                             <div class="col-sm-5">
                                 <input 
-                                    type="text" 
+                                    type="number" 
                                     class="form-control" 
                                     placeholder="NIP"
                                     name="NIP"
@@ -100,8 +99,8 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <a href="{{ route('pengguna') }}" type="submit" class="btn btn-danger">Cancel</a>
+                        <a href="{{ route('pengguna') }}" type="submit" class="btn btn-danger">Batal</a>
+                        <button type="submit" class="btn btn-info">Kirim</button>
                     </div>
                 </form>
             </div>

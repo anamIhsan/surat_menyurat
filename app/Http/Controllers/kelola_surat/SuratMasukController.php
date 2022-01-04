@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\kelola_surat;
 
 use App\Http\Controllers\Controller;
+use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
 
 class SuratMasukController extends Controller
@@ -14,7 +15,11 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
-        return view('pages.kelola_surat.surat-masuk.index');
+        $s_masuk = SuratMasuk::all();
+        
+        return view('pages.kelola_surat.surat-masuk.index', [
+            's_masuk' => $s_masuk
+        ]);
     }
 
     /**
@@ -81,5 +86,22 @@ class SuratMasukController extends Controller
     public function destroy()
     {
         //
+    }
+
+    //mengupload file
+    public function uploadFile($file)
+    {
+        $new_name_file =time() . '.'. $file->getClientOriginalExtension();
+        $file->move(public_path('lampiran_surat'), $new_name_file);
+        return $new_name_file;
+        
+    }
+    
+    //unlink buat menghapus file
+    public function removeFile($file)
+    {   
+        if (file_exists('lampiran_surat/'. $file)){
+        unlink('lampiran_surat/'. $file);
+        }
     }
 }

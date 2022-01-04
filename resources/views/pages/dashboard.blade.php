@@ -18,7 +18,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Total Surat Masuk</span>
-                            <span class="info-box-number counter-value" data-count="10">
+                            <span class="info-box-number counter-value" data-count="{{ $s_masuk }}">
                                 0
                             </span>
                         </div>
@@ -30,7 +30,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Total Surat Keluar</span>
-                            <span class="info-box-number counter-value" data-count="41410">
+                            <span class="info-box-number counter-value" data-count="{{ $s_keluar }}">
                                 0
                             </span>
                         </div>

@@ -16,10 +16,9 @@
                     </ul>
                 </div>
             @endif
-            <div class="card card-info">
+            <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">
-                        <i class="fas fa-edit"></i>  
+                    <h3 class="card-title"> 
                         Tambah Surat Keluar
                     </h3>
                 </div>
@@ -57,7 +56,7 @@
                                 <input 
                                     type="text" 
                                     class="form-control" 
-                                    placeholder="No surat Keluar Contoh ( 08.118/DP-KM/VII/2021 )"
+                                    placeholder="No Surat Keluar Contoh ( 08.118/DP-KM/VII/2021 )"
                                     name="no_surat"
                                     value="{{ old('no_surat') }}"    
                                 >
@@ -110,8 +109,8 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <a href="{{ route('kelola_surat-surat_keluar') }}" class="btn btn-danger">Cancel</a>
+                        <a href="{{ route('kelola_surat-surat_keluar') }}" class="btn btn-danger">Batal</a>
+                        <button type="submit" class="btn btn-info">Kirim</button>
                     </div>
                 </form>
             </div>

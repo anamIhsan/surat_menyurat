@@ -4,24 +4,23 @@
     Master Harap
 @endsection
 
+@section('title page')
+    Master Harap
+@endsection
+
 @section('content')
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header bg-info">
-                            <h3 class="card-title"> 
-                                <i class="fas fa-table"></i> 
-                                Data Master Harap
-                            </h3>
-                        </div>
                         <div class="card-body">
                             {{-- @if (Auth::user()->roles != 'WATCHER')
                             @endif --}}
-                            <a class="btn btn-primary btn-md mb-2" href="{{ route('master_surat-master_harap_create') }}">
-                                <i class="fas fa-edit"></i>
-                                Tambah Data
+                            <a class="btn btn-info btn-md mb-2" href="{{ route('master_surat-master_harap_create') }}">
+                                <i class="fas fa-plus-square"></i>
+                                &nbsp;
+                                Tambah
                             </a>
                            
                             <table id="example1" class="table table-bordered table-striped">
@@ -29,7 +28,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Harap</th>
-                                        <th>Action</th>
+                                        <th>Aksi</th>
                                         {{-- @if (Auth::user()->roles != 'WATCHER')
                                         @endif --}}
                                     </tr>
@@ -45,6 +44,7 @@
                                             <td>
                                                 <a class="btn btn-warning btn-sm" href="{{ route('master_surat-master_harap_edit', $data->id) }}">
                                                     <i class="fas fa-edit"></i>
+                                                    Ubah
                                                 </a>
                                                 <a class="btn btn-danger btn-sm" 
                                                     href="#deleteData{{ $data->id }}"
@@ -52,6 +52,7 @@
                                                     data-toggle="tooltip"    
                                                 >
                                                     <i class="fas fa-trash"></i>
+                                                    Hapus
                                                 </a>
                                             </td>
                                             {{-- @if (Auth::user()->roles != 'WATCHER')
@@ -64,16 +65,16 @@
                                                             @csrf
                                                             @method('DELETE')
                                                             <div class="modal-header">						
-                                                                <h4 class="modal-title">Delete Master Harap</h4>
+                                                                <h4 class="modal-title">Hapus Master Harap</h4>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                             </div>
                                                             <div class="modal-body">					
-                                                                <p>Are you sure you want to delete data <strong>{{ $data->name }}</strong> ?</p>
-                                                                <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                                                <p>Apakah Anda yakin ingin menghapus data <strong>{{ $data->name }}</strong> ?</p>
+                                                                <p class="text-warning"><small>Tindakan ini tidak bisa dibatalkan.</small></p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                                <button type="submit" class="btn btn-danger btn-small">delete</button>
+                                                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+                                                                <button type="submit" class="btn btn-danger btn-small">Hapus</button>
                                                             </div>
                                                         </form>
                                                     </div>

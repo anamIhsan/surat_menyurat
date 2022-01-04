@@ -10,11 +10,11 @@ class SuratMasuk extends Model
     use HasFactory;
 
     protected $table = 'incoming_letters';
-    protected $dates = ['tanggal_masuk', 'tanggal_diteruskan'];
+    protected $dates = ['tanggal_masuk'];
 
     protected $fillable = [
-        'dari', 'no_surat', 'tanggal_masuk', 'tanggal_diteruskan', 
-        'perihal', 'klasifikasi_surat_id', 'sifat_surat_id', 'catatan',
+        'dari', 'no_surat', 'tanggal_masuk', 'perihal', 
+        'klasifikasi_surat_id', 'sifat_surat_id', 'catatan',
         'lampiran_surat', 'diterima'
     ];
 

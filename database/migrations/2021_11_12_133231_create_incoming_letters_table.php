@@ -18,7 +18,6 @@ class CreateIncomingLettersTable extends Migration
             $table->string('dari');
             $table->string('no_surat');
             $table->date('tanggal_masuk');
-            $table->date('tanggal_diteruskan');
             $table->string('perihal');
             $table->integer('klasifikasi_surat_id');
             $table->integer('sifat_surat_id');

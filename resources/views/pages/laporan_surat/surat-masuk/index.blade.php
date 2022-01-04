@@ -4,18 +4,17 @@
     Laporan Surat Masuk
 @endsection
 
+@section('title page')
+    Laporan Surat Masuk
+@endsection
+
 @section('content')
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header bg-info">
-                            <h3 class="card-title"> 
-                                <i class="fas fa-table"></i> 
-                                Data Laporan Surat Masuk
-                            </h3>
-                        </div>
+                        
                         <div class="card-body">
                             {{-- @if (Auth::user()->roles != 'WATCHER')
                             @endif --}}
@@ -28,7 +27,7 @@
                                         <th>Perihal</th>
                                         <th>Klasifikasi</th>
                                         <th>Pegawai Yang Ditunjuk</th>
-                                        <th>Action</th>
+                                        <th>Aksi</th>
                                         {{-- @if (Auth::user()->roles != 'WATCHER')
                                         @endif --}}
                                     </tr>
@@ -52,9 +51,11 @@
                                                 data-toggle="tooltip"     
                                             >
                                                 <i class="fas fa-eye"></i>
+                                                Detail
                                             </a>
                                             <a class="btn btn-warning btn-sm" href="{{ route('laporan_surat-surat_masuk_edit') }}">
                                                 <i class="fas fa-edit"></i>
+                                                Ubah
                                             </a>
                                             <a class="btn btn-danger btn-sm" 
                                                 href="#deleteData"
@@ -62,6 +63,7 @@
                                                 data-toggle="tooltip"    
                                             >
                                                 <i class="fas fa-trash"></i>
+                                                Hapus
                                             </a>
                                         </td>
                                         {{-- @if (Auth::user()->roles != 'WATCHER')
@@ -74,16 +76,16 @@
                                                         {{-- @csrf
                                                         @method('DELETE') --}}
                                                         <div class="modal-header">						
-                                                            <h4 class="modal-title">Delete Laporan Surat Masuk</h4>
+                                                            <h4 class="modal-title">Hapus Laporan Surat Masuk</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                         </div>
                                                         <div class="modal-body">					
-                                                            <p>Are you sure you want to delete data <strong></strong> ?</p>
-                                                            <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                                            <p>Apakah Anda yakin ingin menghapus data <strong></strong> ?</p>
+                                                            <p class="text-warning"><small>Tindakan ini tidak bisa dibatalkan.</small></p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                            <button type="submit" class="btn btn-danger btn-small">delete</button>
+                                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Batal">
+                                                            <button type="submit" class="btn btn-danger btn-small">Hapus</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -251,7 +253,6 @@
                                     <div class="modal-content col-sm-12">
                                         <div class="modal-header bg-primary">						
                                             <h5 class="modal-title">
-                                                <i class="fas fa-user"></i>
                                                 Detail Laporan Surat Masuk
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

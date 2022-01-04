@@ -16,10 +16,9 @@
                     </ul>
                 </div>
             @endif
-            <div class="card card-info">
+            <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <i class="fas fa-edit"></i>  
                         Ubah Laporan Surat Keluar
                     </h3>
                 </div>
@@ -46,8 +45,8 @@
                     </div>
                   </div>
                   <div class="card-footer text-right">
-                    <button type="submit" class="btn btn-success">Submit</button>
-                    <a href="{{ route('laporan_surat-surat_keluar') }}" class="btn btn-danger">Cancel</a>
+                      <a href="{{ route('laporan_surat-surat_keluar') }}" class="btn btn-danger">Batal</a>
+                      <button type="submit" class="btn btn-info">Simpan</button>
                   </div>
                 </form>
             </div>

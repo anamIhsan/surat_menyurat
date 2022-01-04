@@ -16,10 +16,9 @@
                     </ul>
                 </div>
             @endif
-            <div class="card card-info">
+            <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">
-                        <i class="fas fa-edit"></i>  
+                    <h3 class="card-title"> 
                         Tambah Surat Masuk
                     </h3>
                 </div>
@@ -45,14 +44,23 @@
                         <input 
                             type="number" 
                             class="form-control" 
-                            placeholder="No Surat Masuk"
+                            placeholder="No Surat Masuk Contoh ( 08.118/DP-KM/VII/2021 )"
                             name="nik"
                             value="{{ old('nik') }}"    
                         >
                       </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Tanggal Surat Masuk &<br>Tanggal Diteruskan</label>
+                        <label class="col-sm-2 col-form-label">Perihal & Tanggal Surat Masuk</label>
+                        <div class="col-sm-5">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                placeholder="Perihal"
+                                name="perihal"
+                                value="{{ old('perihal') }}"     
+                            >
+                        </div>
                         <div class="col-sm-5">
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
                                 <input 
@@ -66,61 +74,6 @@
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                                <input 
-                                    type="text" 
-                                    class="form-control datetimepicker-input" 
-                                    data-target="#reservationdate2"
-                                    placeholder="Tanggal Diteruskan"
-                                    name="tanggal_lahir"    
-                                />
-                                <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Perihal</label>
-                        <div class="col-sm-5">
-                          <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Perihal"
-                            name="perihal"
-                            value="{{ old('perihal') }}"     
-                        >
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Klasifikasi Surat &<br>Sifat Surat</label>
-                        <div class="col-sm-5">
-                            <select class="form-control" name="gender">
-                                <option disabled="disabled" selected="selected" class="form-control">-- pilih --</option>
-                                <option value="LK">UMUM</option>
-                                <option value="PR">PEMERINTAHAN</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-5">
-                            <select class="form-control" name="gender">
-                                <option disabled="disabled" selected="selected" class="form-control">-- pilih --</option>
-                                <option value="LK">PENTING</option>
-                                <option value="PR">BIASA</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Isi Ringkas</label>
-                        <div class="col-sm-10">
-                          <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Isi Ringkas"
-                            name="isi_ringkas"
-                            value="{{ old('isi_ringkas') }}"     
-                        >
                         </div>
                     </div>
                     <div class="form-group row">
@@ -146,10 +99,27 @@
                         >
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Klasifikasi Surat &<br>Sifat Surat</label>
+                        <div class="col-sm-5">
+                            <select class="form-control" name="gender">
+                                <option disabled="disabled" selected="selected" class="form-control">-- Pilih Klasifikasi Surat --</option>
+                                <option value="LK">UMUM</option>
+                                <option value="PR">PEMERINTAHAN</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-5">
+                            <select class="form-control" name="gender">
+                                <option disabled="disabled" selected="selected" class="form-control">-- Pilih Sifat Surat --</option>
+                                <option value="LK">PENTING</option>
+                                <option value="PR">BIASA</option>
+                            </select>
+                        </div>
+                    </div>
                   </div>
                   <div class="card-footer text-right">
-                    <button type="submit" class="btn btn-success">Submit</button>
-                    <a href="{{ route('kelola_surat-surat_masuk') }}" class="btn btn-danger">Cancel</a>
+                      <a href="{{ route('kelola_surat-surat_masuk') }}" class="btn btn-danger">Batal</a>
+                      <button type="submit" class="btn btn-info">Kirim</button>
                   </div>
                 </form>
             </div>
