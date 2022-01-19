@@ -62,6 +62,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <input type="checkbox" onclick="showPassword();"> &nbsp; Lihat Password
+                </div>
                 <button type="submit" class="btn btn-block btn-primary">
                     Masuk
                 </button>
@@ -76,3 +79,16 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        function showPassword() {
+            $password = document.getElementById('password');
+            if(password.type == 'password'){
+                password.type = 'text';
+            }else{
+                password.type = 'password';
+            }
+        }
+    </script>
+@endpush

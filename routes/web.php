@@ -115,9 +115,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [SuratMasukController::class, 'store'])
             ->name('kelola_surat-surat_masuk_store');
         
-        Route::get('/edit', [SuratMasukController::class, 'edit'])
+        Route::get('/edit/{id}', [SuratMasukController::class, 'edit'])
             ->name('kelola_surat-surat_masuk_edit');
-        Route::put('/update', [SuratMasukController::class, 'update'])
+        Route::put('/update/{id}', [SuratMasukController::class, 'update'])
             ->name('kelola_surat-surat_masuk_update');
 
         Route::delete('/delete/{id}', [SuratMasukController::class, 'destroy'])

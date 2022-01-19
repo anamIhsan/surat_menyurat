@@ -114,7 +114,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_masuk_edit') }}">
+                                                <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_masuk_edit', $data->id) }}">
                                                     <i class="fas fa-edit">
                                                         Ubah
                                                     </i>
@@ -138,9 +138,9 @@
                                             <div id="deleteData{{ $data->id }}" class="modal fade">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
-                                                        <form class="d-inline-block" action="" method="POST">
-                                                            {{-- @csrf
-                                                            @method('DELETE') --}}
+                                                        <form class="d-inline-block" action="{{ route('kelola_surat-surat_masuk_delete', $data->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
                                                             <div class="modal-header">						
                                                                 <h4 class="modal-title">Hapus Surat Masuk</h4>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

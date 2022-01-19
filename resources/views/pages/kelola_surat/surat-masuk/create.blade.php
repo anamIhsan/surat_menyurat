@@ -22,9 +22,9 @@
                         Tambah Surat Masuk
                     </h3>
                 </div>
-                <form action="" method="POST" class="form-horizontal">
-                    {{-- @method('POST')
-                    @csrf --}}
+                <form action="{{ route('kelola_surat-surat_masuk_store') }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                    @method('POST')
+                    @csrf
                   <div class="card-body">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Dari</label>
@@ -42,11 +42,11 @@
                       <label class="col-sm-2 col-form-label">No Surat Masuk</label>
                       <div class="col-sm-10">
                         <input 
-                            type="number" 
+                            type="text" 
                             class="form-control" 
                             placeholder="No Surat Masuk Contoh ( 08.118/DP-KM/VII/2021 )"
-                            name="nik"
-                            value="{{ old('nik') }}"    
+                            name="no_surat"
+                            value="{{ old('no_surat') }}"    
                         >
                       </div>
                     </div>
@@ -68,7 +68,7 @@
                                     class="form-control datetimepicker-input" 
                                     data-target="#reservationdate"
                                     placeholder="Tanggal Surat Masuk"
-                                    name="tanggal_lahir"    
+                                    name="tanggal_masuk"    
                                 />
                                 <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -83,8 +83,8 @@
                             type="text" 
                             class="form-control" 
                             placeholder="Catatan"
-                            name="isi_ringkas"
-                            value="{{ old('isi_ringkas') }}"     
+                            name="catatan"
+                            value="{{ old('catatan') }}"     
                         >
                         </div>
                     </div>
@@ -94,25 +94,26 @@
                           <input 
                             type="file" 
                             class="form-control"
-                            name="lampiran"
-                            value="{{ old('lampiran') }}"     
+                            name="lampiran_surat"    
                         >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Klasifikasi Surat &<br>Sifat Surat</label>
                         <div class="col-sm-5">
-                            <select class="form-control" name="gender">
+                            <select class="form-control" name="klasifikasi_surat_id">
                                 <option disabled="disabled" selected="selected" class="form-control">-- Pilih Klasifikasi Surat --</option>
-                                <option value="LK">UMUM</option>
-                                <option value="PR">PEMERINTAHAN</option>
+                                @foreach ($klasifikasi as $klasifikasis)
+                                    <option value="{{ $klasifikasis->id }}">{{ $klasifikasis->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-sm-5">
-                            <select class="form-control" name="gender">
+                            <select class="form-control" name="sifat_surat_id">
                                 <option disabled="disabled" selected="selected" class="form-control">-- Pilih Sifat Surat --</option>
-                                <option value="LK">PENTING</option>
-                                <option value="PR">BIASA</option>
+                                @foreach ($sifat as $sifats)
+                                    <option value="{{ $sifats->id }}">{{ $sifats->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

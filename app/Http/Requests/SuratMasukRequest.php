@@ -28,8 +28,8 @@ class SuratMasukRequest extends FormRequest
             'no_surat' => 'required|string|min:4|max:25',
             'perihal' => 'required|string|min:4|max:25',
             'tanggal_masuk' => 'required',
-            'catatan' => 'required|string|min:4|max:25',
-            'lampiran' => 'required|mimes:pdf',
+            'catatan' => 'required|string|min:4|max:250',
+            'lampiran_surat' => 'required|mimes:pdf',
             'sifat_surat_id' => 'required',
             'klasifikasi_surat_id' => 'required',
         ];
@@ -58,10 +58,10 @@ class SuratMasukRequest extends FormRequest
             'catatan.required' => 'Catatan wajib di isi',
             'catatan.string' => 'Catatan harus huruf',
             'catatan.min' => 'Catatan minimal 4 huruf',
-            'catatan.max' => 'Catatan maksimal 25 huruf',
+            'catatan.max' => 'Catatan maksimal 250 huruf',
             
-            'lampiran.required' => 'Lampiran surat wajib di isi',
-            'lampiran.mimes' => 'Lampiran surat harus format PDF',
+            'lampiran_surat.required' => 'Lampiran surat wajib di isi',
+            'lampiran_surat.mimes' => 'Lampiran surat harus format PDF',
 
             'sifat_surat_id.required' => 'Sifat Surat wajib di isi',
             
