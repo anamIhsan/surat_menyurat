@@ -124,12 +124,12 @@ Route::middleware(['auth'])->group(function () {
             ->name('kelola_surat-surat_masuk_delete');
 
         // Disposisi
-        Route::get('/disposisi', [DisposisiController::class, 'index'])
+        Route::get('/disposisi/{id}', [DisposisiController::class, 'index'])
             ->name('kelola_surat-disposisi');
-        Route::get('/disposisi/edit', [DisposisiController::class, 'edit'])
+        Route::get('/disposisi/edit/{id}', [DisposisiController::class, 'edit'])
             ->name('kelola_surat-disposisi_edit');
-        Route::delete('/disposisi', [DisposisiController::class, 'destroy'])
-            ->name('kelola_surat-disposisi_delete');
+        Route::put('/disposisi/update/{id}', [DisposisiController::class, 'update'])
+            ->name('kelola_surat-disposisi_update');
 
     });
 
@@ -220,4 +220,4 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-//<!-- arra'd / alqtami / :: -->
+// :20:

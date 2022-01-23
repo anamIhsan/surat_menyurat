@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             MasterPleaseSeeder::class,
             SuratKeluarSeeder::class,
             SuratMasukSeeder::class,
+            DisposisiSeeder::class,
         ]);
     }
 }

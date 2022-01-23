@@ -16,12 +16,12 @@ class CreateDispositionsTable extends Migration
         Schema::create('dispositions', function (Blueprint $table) {
             $table->id();
             $table->integer('surat_masuk_id');
-            $table->integer('master_harap_id');
-            $table->integer('users_id');
-            $table->string('catatan_adminTU');
-            $table->string('catatan_kepalaDinas');
-            $table->string('verifikasi');
-            $table->date('tanggal_verifikasi');
+            $table->integer('master_harap_id')->nullable();
+            $table->integer('users_id')->nullable();
+            $table->string('catatan_adminTU')->nullable();
+            $table->string('catatan_kepalaDinas')->nullable();
+            $table->enum('verifikasi', ['Sudah', 'Belum'])->default('Belum')->nullable();
+            $table->date('tanggal_verifikasi')->nullable();
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\MasterHarap;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,6 +15,8 @@ class MasterPleaseSeeder extends Seeder
      */
     public function run()
     {
+        MasterHarap::truncate();
+
         DB::table('master_pleases')->insert([
             'name' => 'Tanggapan dan Saran'
         ]);

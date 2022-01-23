@@ -5,7 +5,7 @@
 @endsection
 
 @section('title page')
-    Disposisi
+    Disposisi <small><strong>{{ $s_masuk->dari }}</strong></small>
 @endsection
 
 @section('content')
@@ -23,11 +23,12 @@
                                 Kembali
                             </a>
                            
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Harap</th>
-                                        <th>Pegawai Yang Ditunjuk</th>
+                                        {{-- <th>Pegawai Yang Ditunjuk</th> --}}
+                                        <th>Catatan Pengolah</th>
                                         <th>Catatan Admin Tu</th>
                                         <th>Catatan Kepala Dinas</th>
                                         <th>Verifikasi</th>
@@ -38,18 +39,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @php
-                                        $no = 1
-                                    @endphp
-                                    @foreach ($kk as $data)
-                                    @endforeach --}}
                                     <tr>
-                                        <td>asas</td>
-                                        <td>Dinas A</td>
-                                        <td>Umum</td>
-                                        <td>Proposal</td>
-                                        <td>Proposal</td>
-                                        <td>22-22-2222</td>
+                                        <td>
+                                            @if ($disposisi->masterHarap != null )
+                                                {{ $disposisi->masterHarap->name }}
+                                            @else
+                                                <center class="">-</center>
+                                            @endif
+                                        </td>
+                                        <td>{{ $s_masuk->catatan }}</td>
+                                        <td>
+                                            @if ($disposisi->catatan_adminTU)
+                                                {{ $disposisi->catatan_adminTU }}
+                                            @else
+                                                <center class="">-</center>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($disposisi->catatan_kepalaDinas)
+                                                {{ $disposisi->catatan_kepalaDinas }}
+                                            @else
+                                                <center class="">-</center>
+                                            @endif
+                                        </td>
+                                        <td>{{ $disposisi->verifikasi }}</td>
+                                        <td>
+                                            @if ($disposisi->tanggal_verifikasi)
+                                                {{ $disposisi->tanggal_verifikasi }}
+                                            @else
+                                                <center class="">-</center>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a class="btn btn-success btn-sm" 
                                                 href="#showData"
@@ -60,9 +80,9 @@
                                                     Detail
                                                 </i>
                                             </a>
-                                            <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-disposisi_edit') }}">
+                                            <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-disposisi_edit', $disposisi->id) }}">
                                                 <i class="fas fa-edit">
-                                                    Ubah
+                                                    Update
                                                 </i>
                                             </a>
                                         </td>

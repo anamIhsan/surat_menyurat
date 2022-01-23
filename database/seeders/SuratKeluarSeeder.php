@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\SuratKeluar;
 use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,8 @@ class SuratKeluarSeeder extends Seeder
      */
     public function run()
     {
+        SuratKeluar::truncate();
+
         DB::table('outgoing_letters')->insert([
             'teruskan_kepada' => 'PT.Nike',
             'no_surat' => '08.118/DP-KM/VII/2021',

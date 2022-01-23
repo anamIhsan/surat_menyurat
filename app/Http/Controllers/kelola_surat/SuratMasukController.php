@@ -4,6 +4,7 @@ namespace App\Http\Controllers\kelola_surat;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SuratMasukRequest;
+use App\Models\Disposisi;
 use App\Models\KlasifikasiSurat;
 use App\Models\SifatSurat;
 use App\Models\SuratKeluar;
@@ -33,12 +34,10 @@ class SuratMasukController extends Controller
      */
     public function create()
     {
-        $s_keluar = SuratKeluar::all();
         $sifat = SifatSurat::all();
         $klasifikasi = KlasifikasiSurat::all();
 
         return view('pages.kelola_surat.surat-masuk.create', [
-            's_keluar' => $s_keluar,
             'sifat' => $sifat,
             'klasifikasi' => $klasifikasi
         ]);
@@ -58,7 +57,13 @@ class SuratMasukController extends Controller
 
         $data['lampiran_surat'] = $image_file;
 
-        SuratMasuk::create($data);
+        $s_masuk =  SuratMasuk::create($data);
+
+        $create = [
+            'surat_masuk_id' => $s_masuk->id
+        ];
+
+        Disposisi::create($create);
         
         return redirect()->route('kelola_surat-surat_masuk')->with('notification-success-add', '');
         
@@ -70,9 +75,11 @@ class SuratMasukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        //
+        $url = action([DisposisiController::class, 'index'], ['id' => $id]);
+        
+        return redirect($url);
     }
 
     /**
@@ -130,6 +137,8 @@ class SuratMasukController extends Controller
     {
         $data = SuratMasuk::findOrFail($id);
         $this->removeFile($data->lampiran_surat);
+
+        $data->disposisi()->delete();
         $data->delete();
         return back()->with('notification-success-delete', '');
     }

@@ -21,7 +21,7 @@ class CreateIncomingLettersTable extends Migration
             $table->string('perihal');
             $table->integer('klasifikasi_surat_id');
             $table->integer('sifat_surat_id');
-            $table->string('catatan');
+            $table->string('catatan')->nullable();
             $table->string('lampiran_surat');
             $table->string('diterima')->nullable();
             $table->timestamps();

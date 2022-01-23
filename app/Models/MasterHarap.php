@@ -14,4 +14,9 @@ class MasterHarap extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function disposisi()
+    {
+        return $this->belongsTo(Disposisi::class, 'master_harap_id', 'id');
+    }
 }

@@ -32,12 +32,10 @@ class SuratKeluarController extends Controller
      */
     public function create()
     {
-        $s_keluar = SuratKeluar::all();
         $sifat = SifatSurat::all();
         $klasifikasi = KlasifikasiSurat::all();
 
         return view('pages.kelola_surat.surat-keluar.create', [
-            's_keluar' => $s_keluar,
             'sifat' => $sifat,
             'klasifikasi' => $klasifikasi
         ]);

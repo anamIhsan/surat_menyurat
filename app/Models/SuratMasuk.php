@@ -27,4 +27,9 @@ class SuratMasuk extends Model
     {
         return $this->hasOne(KlasifikasiSurat::class, 'id', 'klasifikasi_surat_id');
     }
+
+    public function disposisi()
+    {
+        return $this->hasOne(Disposisi::class, 'surat_masuk_id', 'id');
+    }
 }

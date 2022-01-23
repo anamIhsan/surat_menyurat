@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\kelola_surat;
 
 use App\Http\Controllers\Controller;
+use App\Models\Disposisi;
+use App\Models\MasterHarap;
+use App\Models\SuratMasuk;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DisposisiController extends Controller
@@ -12,9 +16,15 @@ class DisposisiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($url)
     {
-        return view('pages.kelola_surat.surat-masuk.disposisi.index');
+        $s_masuk = SuratMasuk::findOrFail($url);
+        $disposisi = Disposisi::findOrFail($url);
+
+        return view('pages.kelola_surat.surat-masuk.disposisi.index', [
+            's_masuk' => $s_masuk,
+            'disposisi' => $disposisi,
+        ]);
     }
 
     /**
@@ -55,9 +65,17 @@ class DisposisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('pages.kelola_surat.surat-masuk.disposisi.edit');
+        $data = Disposisi::findOrFail($id);
+        $masterHarap = MasterHarap::all();
+        $pegawais = User::where('roles', 'Pegawai')->get();
+
+        return view('pages.kelola_surat.surat-masuk.disposisi.edit', [
+            'data' => $data,
+            'masterHarap' => $masterHarap,
+            'pegawais' => $pegawais,
+        ]);
     }
 
     /**
@@ -67,8 +85,19 @@ class DisposisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $disposisi = Disposisi::findOrFail($id);
+        $s_masuk = SuratMasuk::findOrFail($disposisi->suratMasuk->id);
+
+        if($request->verifikasi == null){
+            $data['verifikasi'] = 'Belum';
+        }
+
+        $disposisi->update($data);
+        $s_masuk->update($data);
+
+        return redirect()->route('kelola_surat-disposisi', $id)->with('notification-success-edit', '');
     }
 }

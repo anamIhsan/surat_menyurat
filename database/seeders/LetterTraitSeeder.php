@@ -14,6 +14,8 @@ class LetterTraitSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('letter_traits')->truncate();
+
         DB::table('letter_traits')->insert([
             'name' => 'Sangat Segera'
         ]);

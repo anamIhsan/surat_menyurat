@@ -19,74 +19,105 @@
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title"> 
-                        Ubah Disposisi
+                        Update Disposisi
                     </h3>
                 </div>
-                <form action="" method="POST" class="form-horizontal">
-                    {{-- @method('POST')
-                    @csrf --}}
+                <form action="{{ route('kelola_surat-disposisi_update', $data->id) }}" method="POST" class="form-horizontal">
+                    @method('PUT')
+                    @csrf
                   <div class="card-body">
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Catatan Admin TU</label>
-                        <div class="col-sm-10">
-                          <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Catatan"
-                            name="isi_ringkas"
-                            value="{{ old('isi_ringkas') }}"     
-                        >
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Tanggal Verifikasi &<br>Harap</label>
-                        <div class="col-sm-5">
-                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input 
+                            @if (Auth::user()->roles == 'ADMIN' || Auth::user()->roles == 'SUPER ADMIN')
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Catatan Admin</label>
+                                <div class="col-sm-10">
+                                    <input 
                                     type="text" 
-                                    class="form-control datetimepicker-input" 
-                                    data-target="#reservationdate"
-                                    placeholder="Tanggal Verifikasi"
-                                    name="tanggal_lahir"    
-                                />
-                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    class="form-control" 
+                                    placeholder="Catatan"
+                                    name="catatan"
+                                    value="{{ $data->suratMasuk->catatan }}"     
+                                >
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <select class="form-control" name="gender">
-                                <option disabled="disabled" selected="selected" class="form-control">-- pilih --</option>
-                                <option value="LK">TANGGAPAN DAN SARAN</option>
-                                <option value="PR">PROSES LEBIH LANJUT</option>
-                                <option value="PR">KORDINASI / KONFIRMASI</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Teruskan Kepada</label>
-                        <div class="col-sm-5">
-                            <select class="form-control" name="gender">
-                                <option disabled="disabled" selected="selected" class="form-control">-- pilih --</option>
-                                <option value="LK">Pegawai 1</option>
-                                <option value="PR">Pegawai 2</option>
-                                <option value="PR">Pegawai 3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Verifikasi</label>
-                        <div class="col-sm-10">
-                          <input 
-                            type="checkbox"
-                            name="isi_ringkas"
-                            value="{{ old('isi_ringkas') }}"     
-                        >
-                        </div>
-                    </div>
+                        @endif
+                        @if (Auth::user()->roles == 'ADMIN TU' || Auth::user()->roles == 'SUPER ADMIN')
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Catatan Admin TU</label>
+                                <div class="col-sm-10">
+                                    <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="Catatan"
+                                    name="catatan_adminTU"
+                                    value="{{ $data->catatan_adminTU }}"     
+                                >
+                                </div>
+                            </div>
+                        @endif
+                        @if (Auth::user()->roles == 'KEPALA DINAS' || Auth::user()->roles == 'SUPER ADMIN')
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Catatan Kepala Dinas</label>
+                                <div class="col-sm-10">
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="Catatan"
+                                    name="catatan_kepalaDinas"
+                                    value="{{ $data->catatan_kepalaDinas }}"     
+                                >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Tanggal Verifikasi &<br>Harap</label>
+                                <div class="col-sm-5">
+                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                        <input 
+                                            type="text" 
+                                            class="form-control datetimepicker-input" 
+                                            data-target="#reservationdate"
+                                            placeholder="Tanggal Verifikasi"
+                                            name="tanggal_verifikasi"    
+                                        />
+                                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <select class="form-control" name="master_harap_id">
+                                        <option disabled="disabled" selected="selected" class="form-control">-- Pilih Harap  --</option>
+                                        @foreach ($masterHarap as $harap)
+                                            <option value="{{ $harap->id }}">{{ $harap->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Teruskan Kepada</label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" name="users_id">
+                                        <option disabled="disabled" selected="selected" class="form-control">-- Pilih Pegawai --</option>
+                                        @foreach ($pegawais as $pegawai)
+                                            <option value="{{ $pegawai->id }}">{{ $pegawai->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Verifikasi</label>
+                                <div class="col-sm-10">
+                                <input 
+                                    type="checkbox"
+                                    name="verifikasi"
+                                    value="Sudah"  
+                                    {{ $data->verifikasi == 'Sudah' ? 'checked' : '' }}   
+                                >
+                                </div>
+                            </div>
+                        @endif
                   </div>
                   <div class="card-footer text-right">
-                      <a href="{{ route('kelola_surat-disposisi') }}" class="btn btn-danger">Batal</a>
+                      <a href="{{ route('kelola_surat-disposisi', $data->id) }}" class="btn btn-danger">Batal</a>
                       <button type="submit" class="btn btn-info">Simpan</button>
                   </div>
                 </form>

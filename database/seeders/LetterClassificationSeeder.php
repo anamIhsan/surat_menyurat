@@ -14,6 +14,8 @@ class LetterClassificationSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('letter_classifications')->truncate();
+
         DB::table('letter_classifications')->insert([
             'code' => '000',
             'name' => 'umum',

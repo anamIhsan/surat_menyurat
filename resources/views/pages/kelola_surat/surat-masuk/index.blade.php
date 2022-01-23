@@ -119,7 +119,7 @@
                                                         Ubah
                                                     </i>
                                                 </a>
-                                                <a class="btn btn-info btn-sm" href="{{ route('kelola_surat-disposisi') }}">
+                                                <a class="btn btn-info btn-sm" href="{{ route('kelola_surat-disposisi', $data->id) }}">
                                                     <i class="fas fa-check-square">
                                                         Disp
                                                     </i>

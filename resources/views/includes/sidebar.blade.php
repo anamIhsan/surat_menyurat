@@ -111,7 +111,7 @@
             {{ (request()->is('kelola-surat/surat-keluar')) ? 'menu-open' : '' }}
             {{ (request()->is('kelola-surat/surat-keluar/create')) ? 'menu-open' : '' }}
             {{ (request()->is('kelola-surat/surat-keluar/edit*')) ? 'menu-open' : '' }}
-            {{ (request()->is('kelola-surat/surat-masuk/disposisi')) ? 'menu-open' : '' }}
+            {{ (request()->is('kelola-surat/surat-masuk/disposisi*')) ? 'menu-open' : '' }}
             {{ (request()->is('kelola-surat/surat-masuk/disposisi/create')) ? 'menu-open' : '' }}
             {{ (request()->is('kelola-surat/surat-masuk/disposisi/edit*')) ? 'menu-open' : '' }}
           ">
@@ -124,7 +124,7 @@
               {{ (request()->is('kelola-surat/surat-keluar/create')) ? 'active' : '' }}  
               {{ (request()->is('kelola-surat/surat-keluar/edit*')) ? 'active' : '' }} 
               {{ (request()->is('kelola-surat/surat-keluar/anggota*')) ? 'active' : '' }}
-              {{ (request()->is('kelola-surat/surat-masuk/disposisi')) ? 'active' : '' }}  
+              {{ (request()->is('kelola-surat/surat-masuk/disposisi*')) ? 'active' : '' }}  
               {{ (request()->is('kelola-surat/surat-masuk/disposisi/create')) ? 'active' : '' }}  
               {{ (request()->is('kelola-surat/surat-masuk/disposisi/edit*')) ? 'active' : '' }}   
             ">
@@ -141,7 +141,7 @@
                   {{ (request()->is('kelola-surat/surat-masuk')) ? 'active' : '' }}  
                   {{ (request()->is('kelola-surat/surat-masuk/create')) ? 'active' : '' }}  
                   {{ (request()->is('kelola-surat/surat-masuk/edit*')) ? 'active' : '' }}
-                  {{ (request()->is('kelola-surat/surat-masuk/disposisi')) ? 'active' : '' }}  
+                  {{ (request()->is('kelola-surat/surat-masuk/disposisi*')) ? 'active' : '' }}  
                   {{ (request()->is('kelola-surat/surat-masuk/disposisi/create')) ? 'active' : '' }}  
                   {{ (request()->is('kelola-surat/surat-masuk/disposisi/edit*')) ? 'active' : '' }}    
                 ">
