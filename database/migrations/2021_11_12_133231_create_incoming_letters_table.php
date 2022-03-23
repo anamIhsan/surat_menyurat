@@ -23,7 +23,7 @@ class CreateIncomingLettersTable extends Migration
             $table->integer('sifat_surat_id');
             $table->string('catatan')->nullable();
             $table->string('lampiran_surat');
-            $table->string('diterima')->nullable();
+            $table->foreignId('diterima')->nullable();
             $table->timestamps();
         });
     }

@@ -9,7 +9,9 @@ use App\Models\KlasifikasiSurat;
 use App\Models\SifatSurat;
 use App\Models\SuratKeluar;
 use App\Models\SuratMasuk;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SuratMasukController extends Controller
 {
@@ -20,7 +22,12 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
-        $s_masuk = SuratMasuk::all();
+        
+        if(Auth::user()->roles == "ADMIN" || Auth::user()->roles == "SUPER ADMIN"){
+            $s_masuk = SuratMasuk::all();
+        }else{
+            $s_masuk = SuratMasuk::where("diterima", Auth::user()->id)->get();
+        }
         
         return view('pages.kelola_surat.surat-masuk.index', [
             's_masuk' => $s_masuk
@@ -52,10 +59,14 @@ class SuratMasukController extends Controller
     public function store(SuratMasukRequest $request)
     {
         $data = $request->all();
+
+        $user = User::where("roles", "ADMIN TU")->first();
         
         $image_file = $this->uploadFile($request->file('lampiran_surat'));
 
         $data['lampiran_surat'] = $image_file;
+
+        $data['diterima'] = $user->id;
 
         $s_masuk =  SuratMasuk::create($data);
 

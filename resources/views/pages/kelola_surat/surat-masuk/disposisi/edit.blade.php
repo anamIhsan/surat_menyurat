@@ -95,7 +95,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Teruskan Kepada</label>
                                 <div class="col-sm-5">
-                                    <select class="form-control" name="users_id">
+                                    <select class="form-control" name="diterima">
                                         <option disabled="disabled" selected="selected" class="form-control">-- Pilih Pegawai --</option>
                                         @foreach ($pegawais as $pegawai)
                                             <option value="{{ $pegawai->id }}">{{ $pegawai->name }}</option>

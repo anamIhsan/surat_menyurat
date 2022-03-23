@@ -32,7 +32,7 @@
                                         <th>Catatan Admin Tu</th>
                                         <th>Catatan Kepala Dinas</th>
                                         <th>Verifikasi</th>
-                                        <th>Tanggal Verifikasi  </th>
+                                        <th>Tanggal Verifikasi</th>
                                         <th>Aksi</th>
                                         {{-- @if (Auth::user()->roles != 'WATCHER')
                                         @endif --}}

@@ -15,13 +15,13 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            {{-- @if (Auth::user()->roles != 'WATCHER')
-                            @endif --}}
-                            <a class="btn btn-info btn-md mb-2" href="{{ route('kelola_surat-surat_masuk_create') }}">
-                                <i class="fas fa-plus-square"></i>
-                                &nbsp;
-                                Tambah
-                            </a>
+                            @if(Auth::user()->roles == "SUPER ADMIN" || Auth::user()->roles == "ADMIN")
+                                <a class="btn btn-info btn-md mb-2" href="{{ route('kelola_surat-surat_masuk_create') }}">
+                                    <i class="fas fa-plus-square"></i>
+                                    &nbsp;
+                                    Tambah
+                                </a>
+                            @endif 
                            
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
@@ -114,23 +114,30 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_masuk_edit', $data->id) }}">
-                                                    <i class="fas fa-edit">
-                                                        Ubah
-                                                    </i>
-                                                </a>
+
+                                                @if(Auth::user()->roles == "SUPER ADMIN" || Auth::user()->roles == "ADMIN")
+                                                    <a class="btn btn-warning btn-sm" href="{{ route('kelola_surat-surat_masuk_edit', $data->id) }}">
+                                                        <i class="fas fa-edit">
+                                                            Ubah
+                                                        </i>
+                                                    </a>
+                                                @endif
+
                                                 <a class="btn btn-info btn-sm" href="{{ route('kelola_surat-disposisi', $data->id) }}">
                                                     <i class="fas fa-check-square">
                                                         Disp
                                                     </i>
                                                 </a>
-                                                <a class="btn btn-danger btn-sm" 
-                                                    href="#deleteData{{ $data->id }}"
-                                                    data-toggle="modal" 
-                                                    data-toggle="tooltip"    
-                                                >
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
+
+                                                @if(Auth::user()->roles == "SUPER ADMIN" || Auth::user()->roles == "ADMIN")
+                                                    <a class="btn btn-danger btn-sm" 
+                                                        href="#deleteData{{ $data->id }}"
+                                                        data-toggle="modal" 
+                                                        data-toggle="tooltip"    
+                                                    >
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                @endif
                                             </td>
                                             {{-- @if (Auth::user()->roles != 'WATCHER')
                                             @endif --}}

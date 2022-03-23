@@ -220,4 +220,4 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-// :20:
+// ::
